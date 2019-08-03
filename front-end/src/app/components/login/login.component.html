@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="card align-self-center justify-content-center  "
+     style="
+     height: 100vh;
+">
+  <div class="card text-center mx-auto ">
+    <form class="rounded-3"
+          style="
+          min-width: 350px;
+          padding: 40px 30px;
+          -webkit-border-radius: 7px;
+          -moz-border-radius: 7px;
+          border-radius: 7px;
+          -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+          -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);">
+
+      <div class="form-group">
+        <div class="card-title "
+             id="logotype"
+             style="
+             padding-right: 80px;
+             padding-bottom: 20px;
+             font:25px sans-serif;
+             font-weight:bold;">
+          <div class="logo"
+               style="
+                       color: #2a2a2a;
+                       display:inline-block;">Kach
+            <div class="type"
+                 style="
+                        color: #4999f0;
+                        display:inline-block;">Touch
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body"
+           style="font-size: 16px; ">
+
+        <p  class="card-subtitle mb-4 "
+            style="font-size: 16px;
+          font-weight: bold;">
+        </p>
+
+
+    <form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="alert alert-danger" role="alert"  *ngIf="errorMessage!=null">{{errorMessage}}</div>
+      <span id="reauth-email" class="reauth-email"></span>
+
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <input class="form-control"
+               type="email"
+               placeholder="Email"
+               id="email"
+               name="email"
+               pattern="[^ @]*@[^ @]*" [(ngModel)]="user.email" #email="ngModel" required />
+        <div *ngIf="f.submitted && !email.valid" class="help-block">An valid email is required</div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input type="password"
+               placeholder="Password"
+               value="FFF"
+               class="form-control"
+               id="password"
+               name="password" [(ngModel)]="user.password" #password="ngModel" required />
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+
+
+      <div class="form-check pl-1">
+        <input class="form-check-input d-flex"
+               type="checkbox" id="gridCheck1"
+               style="
+                   margin-top: 7px;
+                   font-weight: normal">
+        <label class="form-check-label d-flex pl-4 "
+               for="gridCheck1"
+               style="
+                   font-weight: normal">   Remember me
+        </label>
+      </div>
+      <div class="etc-login-form d-flex pb-2"
+           style="
+             padding-left: 0px;
+             margin-left: 0px">
+        <a [routerLink]="['/forgotpas']"
+           class="btn btn-link d-flex"
+           style="font-size: 16px;
+                  padding-left: 0px">Forgot your password?
+        </a>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block btn-signin"
+                      type="submit">Login
+      </button>
+
+
+
+      <div class="sign-in-form d-flex pt-2">
+        <div class="DontAccount  "
+             style="
+               display:inline-block;
+               margin-top: 5px"
+        >Don`t have account?
+        </div>
+        <a [routerLink]="['/register']"
+           class="btn btn-link"
+           style="
+                  display:inline-block;
+                  font-size: 16px"
+        >Sing Up</a>
+      </div>
+
+
+    </form>
+  </div>
+  </form>
+</div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

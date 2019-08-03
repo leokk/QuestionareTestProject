@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="66.66666666666669" y="190.0">com.social.entities.User</node>
+    <node x="339.0" y="0.0">com.social.entities.Worker</node>
+    <node x="180.0" y="22.0">com.social.entities.Payment</node>
+    <node x="0.0" y="0.0">com.social.entities.Service</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.social.entities.User" target="com.social.entities.Payment">
+      <point x="16.58333333333333" y="-136.0" />
+      <point x="182.75" y="170.0" />
+      <point x="199.0" y="170.0" />
+      <point x="-38.0" y="48.0" />
+    </edge>
+    <edge source="com.social.entities.User" target="com.social.entities.Service">
+      <point x="-82.91666666666666" y="-136.0" />
+      <point x="83.25000000000003" y="170.0" />
+      <point x="26.666666666666657" y="170.0" />
+      <point x="-53.333333333333336" y="70.0" />
+    </edge>
+    <edge source="com.social.entities.Service" target="com.social.entities.User">
+      <point x="53.33333333333334" y="70.0" />
+      <point x="133.33333333333334" y="170.0" />
+      <point x="149.58333333333334" y="170.0" />
+      <point x="-16.583333333333343" y="-136.0" />
+    </edge>
+    <edge source="com.social.entities.Payment" target="com.social.entities.User">
+      <point x="0.0" y="48.0" />
+      <point x="237.0" y="170.0" />
+      <point x="215.91666666666669" y="170.0" />
+      <point x="49.75" y="-136.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="450.1111111111111" y="291.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

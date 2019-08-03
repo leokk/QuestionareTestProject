@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background: #fafafa;">
+
+
+
+<div class="position-sticky sticky-top">
+  <nav class="navbar  navbar-expand-lg navbar-light bg-white "
+       style="
+     padding: 0px 170px 0px 170px ;
+     height: 65px ;
+     margin-bottom: 0px;">
+    <div class="navbar-brand "
+         id="logotype1"
+         style="
+             font:25px sans-serif;
+             font-weight:bold;
+             margin-top: 20px">
+      <div class="logo"
+           style="color: #2a2a2a; display:inline-block">Kach<div class="type" style="color: #4999f0;
+                    display:inline-block;">Touch</div>
+      </div>
+    </div>
+
+
+    <div class="collapse navbar-collapse justify-content-end"
+         id="navbarNavDropdown">
+
+      <ul class="navbar-nav"
+          style="
+        font-size: 14px;
+        margin-top: 0px;
+        padding-top: 0px;">
+        <style>
+          @media only screen and (min-width: 768px) {
+            .dropdown:hover .dropdown-menu {
+              display: block;
+              margin-top: 0;
+            }
+          }
+          .nav-item{
+            margin-left: 30px;
+            color: #ababab;
+            font-weight:bold;
+          }
+          .nav-item a:hover{
+            color: #187dec;
+            transition: all 0.3s ease;
+          }
+          ul.navbar-nav a:hover{
+            color: #187dec !important;
+            transition: all 0.3s ease;
+          }
+        </style>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{currentUser.firstName}} {{currentUser.lastName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 15px; margin-right: 20px; font-weight:bold;">
+            <a class="dropdown-item" [routerLink]="['/edit-profile']">Edit profile</a>
+            <a class="dropdown-item" [routerLink]="['/change-pass']" >Change password</a>
+            <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+<div class="m-5 ">
+<div class="jumbotron center-block text-center">
+  <h1 class="display-4">Your cash is {{currentUser.score}} .</h1>
+  <!--<p class="lead"> Your rate: {{currentUser.score}} .</p>-->
+  <hr class="my-4">
+  <p></p>
+
+  <div *ngIf="currentUser">
+
+  </div>
+
+  <div class="lead">
+    <div>
+      <a class="btn btn-primary btn-lg" role="button" (click)="addSrvClick()" style="padding:  20px 50px">Choose a service</a>
+      <br>
+
+<div class="d-flex justify-content-center">
+          <div *ngIf="isSrvButtonClicked==true">
+            <ul class="heroes">
+              <li *ngFor="let srv of srvs"
+                  [class.selected]="srv === selectedSrv"
+                  (click)="onSelectSrv(srv)">
+                <span class="badge">{{srv.name}}</span>
+              </li>
+            </ul>
+          </div>
+</div>
+
+  <div style="font-size: 50px; font-weight:bold; color: blue;">
+
+      <div *ngIf="selectedSrv">
+        <p>Название:{{selectedSrv.name}}</p>
+        <p>Описание:{{selectedSrv.description}}</p>
+        <p>Стоимость в месяц:{{selectedSrv.cost}}</p>
+        <a class="btn btn-primary btn-lg" role="button" (click)="changeUserService()" style="padding:  20px 50px">Применить</a>
+      </div>
+      <div *ngIf="errorMessage">
+        <p>Денег нет, но ты пытался</p>
+      </div>
+  </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+
+
+
+<!--<div class="section">-->
+  <!--<div class="enter-form">-->
+    <!--<div style="padding: 20px;">-->
+      <!--<div class="welcomeform">-->
+        <!--<p class="welcomename"> {{currentUser.firstName}} {{currentUser.lastName}}!!!</p>-->
+        <!--<p class="welcomename"> Your cash is {{currentUser.score}} .</p>-->
+        <!--<p class="welcometext"> Welcome to your profile! </p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>

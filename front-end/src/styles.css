@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+
+  background: #fafafa;
+  height: 100vh;
+}
+.header{
+
+  position: sticky;
+  top: 0;
+  min-height: 2em;
+  background: #ffffff;
+  height: auto;
+}
+.logotype{
+  float: left;
+  margin-top: 15px;
+}
+.logo, .type{
+  text-transform: uppercase;
+  font:20px sans-serif;
+  font-weight:bold;
+  text-decoration: none;
+}
+.logo{
+  float:right;
+  color: #2a2a2a;
+}
+.type{
+  float:right;
+  color: #4999f0;
+}
+
+.welcome{
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #665c76;
+}
+.welcome >p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcomename{
+  font-size: 100px ;
+}
+.welcometext{
+  font-size: 80px ;
+}
+/*Меню*/
+.menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  margin-top: 5px;
+}
+
+.menu ul, .menu ol{
+  list-style: none;
+}
+.menu >ul{
+  display: flex;
+  justify-content: center;
+}
+.menu > ul li a{
+  display: block;
+  /*background: #171a21;   !*цвет заливки*!*/
+  /*padding: 15px 20px 10px 20px;  !*+края*!*/
+  margin:15px 15px 10px 15px;        /*-края*/
+  font-size: 14px;
+  color: #ababab;
+  text-decoration: none;
+  font-weight:bold;
+  transition: all 0.3s ease;
+}
+.menu > ul li{
+  position: relative;
+}
+
+.menu ul li a:hover{
+  color: #187dec;
+  transition: all 0.3s ease;
+}
+
+/*ПодМеню*/
+.menu li ul{
+  /*border:1px solid #c7c8ca;*/
+  position: absolute;
+  min-width: 0px;
+  display: none;  /*Cкрывает подменю*/
+}
+.menu li>ul li a{
+  color: #3b3b3b;
+  /*border:1px solid #c7c8ca;*/
+  padding: 0px 0px 0px 0px;
+  text-transform: none;
+}
+.menu li>ul li a:hover{
+  color: #187dec;
+  transition: all 0.3s ease;
+}
+.menu > ul li ul{
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+.menu li>ul li ul{
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+.menu li:hover > ul{
+  display: block;
+}
+
+/*Меню конец*/
+/*!*Вход регистрация начало*!*/
+.section{
+
+  /*border:1px solid #c7c8ca;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.enter-form{
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border:1px solid #c7c8ca;
+  margin: 20px 0px 50px 0px;
+}
