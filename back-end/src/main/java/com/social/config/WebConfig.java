@@ -66,9 +66,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/account/register", "/account/login").permitAll()
 
 				.antMatchers("/account/changePas","/account/field",
-				"/account/services/{id}","/account/edit/{id}","/account/edit").hasRole("ROLE_USER")
+				"/account/services/{id}","/account/edit/{id}","/account/edit").hasRole("USER")
 
-				.antMatchers("http://localhost:8080/**").hasRole("ROLE_ADMIN")
+				.antMatchers("http://localhost:8080/**").hasRole("ADMIN")
 
 
 //		http.cors().and()

@@ -6,6 +6,8 @@ import {WorkerService} from "../../services/worker.service";
 import {SrvService} from "../../services/srv.service";
 import {AccountService} from "../../services/account.service";
 import {Service} from "../../model/model.srv";
+import {MatDialog} from "@angular/material";
+import {QuestionComponent} from "../../question/question.component";
 
 @Component({
   selector: 'app-profile',
@@ -20,11 +22,12 @@ export class ProfileComponent implements OnInit {
   isSrvButtonClicked:boolean;
   selectedSrv:Service;
   srvs:Service[];
-  clickedSrv:boolean;
-  constructor(public authService: AuthService, public router: Router, public srvService:SrvService,
+  constructor(public dialog: MatDialog, public authService: AuthService, public router: Router, public srvService:SrvService,
               public accountService:AccountService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+
+
 
   ngOnInit() {
     this.isSrvButtonClicked=false;
@@ -37,6 +40,11 @@ export class ProfileComponent implements OnInit {
 
     console.log(this.currentUser);
   }
+  openQuestionDialog(): void {
+    const dialogRef = this.dialog.open(QuestionComponent, {
+      //
+      // data: {name: this.name, animal: this.animal}
+    })};
 
   onSelectSrv(srv: Service): void {
     if(this.selectedSrv==srv)

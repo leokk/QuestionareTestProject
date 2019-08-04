@@ -19,6 +19,11 @@ import { RefreshProfileComponent } from './utilities/refresh-profile/refresh-pro
 import { AdminComponent } from './components/admin/admin.component';
 import { ChangeServiceComponent } from './components/change-service/change-service.component';
 import { ManagerComponent } from './components/manager/manager.component';
+import { AnswerComponent } from './components/answer/answer.component';
+import { QuestionComponent } from './question/question.component';
+import {MatButtonModule, MatDialog, MatDialogModule, MatTableModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatCheckboxModule} from "@angular/material/typings/checkbox";
 
 
 
@@ -37,12 +42,19 @@ import { ManagerComponent } from './components/manager/manager.component';
     AdminComponent,
     ChangeServiceComponent,
     ManagerComponent,
+    AnswerComponent,
+    QuestionComponent,
 
 
 
   ],
   imports: [
     BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule,
   ],
   providers: [AuthService,AccountService,UrlPermission],
   bootstrap: [AppComponent]

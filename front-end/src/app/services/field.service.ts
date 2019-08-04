@@ -13,18 +13,11 @@ export class FieldService {
   }
 
 
-  //Todo: change with FieldUser
+  //Todo: change with question and answer
 
   createField(fieldUser:FieldUser){
     return this.http.post(AppComponent.API_URL+'/account/field/create',fieldUser).map(resp=>resp.json());
   }
 
-  editField(fieldUser:FieldUser){
-    return this.http.post(AppComponent.API_URL+'/account/field',fieldUser).map(resp=>resp.json());
-  }
-
-  removeField(fieldUser:FieldUser){
-    return this.http.post(AppComponent.API_URL+'/account/field/delete',fieldUser).map(resp=>resp.json());
-  }
 
 }

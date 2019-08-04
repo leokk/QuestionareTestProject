@@ -46,6 +46,12 @@ public  class User implements UserDetails{
 	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true)
 	private Set<Payment> payments;
 
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true)
+	private Set<Question> questions;
+
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true)
+	private Set<Answer> answers;
+
 	public Service getService() {
 		return service;
 	}
