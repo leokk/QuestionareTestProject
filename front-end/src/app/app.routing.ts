@@ -8,6 +8,8 @@ import {ChangePassComponent} from "./components/change-pass/change-pass.componen
 import {RefreshProfileComponent} from "./utilities/refresh-profile/refresh-profile.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {ManagerComponent} from "./components/manager/manager.component";
+import {QuestionComponent} from "./components/question/question.component";
+import {AnswerComponent} from "./components/answer/answer.component";
 
 
 const appRoutes: Routes = [
@@ -19,6 +21,8 @@ const appRoutes: Routes = [
   {path: 'ref-prof', component: RefreshProfileComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'manager', component: ManagerComponent},
+  {path: 'fields', component: QuestionComponent},
+  {path: 'responses', component: AnswerComponent},
 
   {path: 'profile/admin', redirectTo: '/admin'},
   {path: 'profile/manager', redirectTo: '/manager'},

@@ -56,6 +56,7 @@ public class AdminController {
 
     @GetMapping(value = "/services")
     public ResponseEntity<?> getAllServices() {
+        List<Service> l=srvService.findAllServices();
         return new ResponseEntity<List<Service>>(srvService.findAllServices(), HttpStatus.OK);
     }
 

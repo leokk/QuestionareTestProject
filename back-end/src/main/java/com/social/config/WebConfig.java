@@ -63,12 +63,12 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
-				.antMatchers("/account/register", "/account/login").permitAll()
-
-				.antMatchers("/account/changePas","/account/field",
-				"/account/services/{id}","/account/edit/{id}","/account/edit").hasRole("USER")
-
-				.antMatchers("http://localhost:8080/**").hasRole("ADMIN")
+//				.antMatchers("/account/register", "/account/login").permitAll()
+//
+//				.antMatchers("/account/changePas","/account/field",
+//				"/account/services/{id}","/account/edit/{id}","/account/edit").hasRole("USER")
+//
+//				.antMatchers("http://localhost:8080/**").hasRole("ADMIN")
 
 
 //		http.cors().and()
@@ -77,9 +77,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 //		// ignoring the guest's urls "
 //		.antMatchers("/account/admin/**").hasRole("ADMIN")
 //
-//		.antMatchers("/account/register","/account/edit","/account/login","/logout",
-//				"/account/changePas","/account/field/create","/account/field",
-//				"/account/field/{id}","Test","/account/admin/**","/account/admin/{id}","Test").permitAll()
+		.antMatchers("/account/register","/account/edit","/account/login","/logout",
+				"/account/changePas","/account/field/create","/account/field",
+				"/account/field/{id}","Test","/account/admin/**","/account/admin/{id}","Test").permitAll()
 //
 
 		// authenticate all remaining URLS

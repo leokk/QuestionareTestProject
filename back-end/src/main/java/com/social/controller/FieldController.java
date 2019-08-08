@@ -1,9 +1,13 @@
 package com.social.controller;
 
+import com.social.entities.Answer;
 import com.social.entities.Question;
+import com.social.entities.Service;
 import com.social.services.FieldService;
 import com.social.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +25,9 @@ public class FieldController {
         this.fieldService = fieldService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public List<Question> getQuestionByUserId(@PathVariable("id")Long id){
-        return fieldService.getQuestionByUserId(id);
+
+    @GetMapping(value = "field/{id}")
+    public ResponseEntity<?> getQuestionByUserId(@PathVariable("id")Long id) {
+        return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
     }
 }

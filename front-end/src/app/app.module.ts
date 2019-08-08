@@ -19,11 +19,12 @@ import { RefreshProfileComponent } from './utilities/refresh-profile/refresh-pro
 import { AdminComponent } from './components/admin/admin.component';
 import { ChangeServiceComponent } from './components/change-service/change-service.component';
 import { ManagerComponent } from './components/manager/manager.component';
+
+import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatTableModule} from "@angular/material";
 import { AnswerComponent } from './components/answer/answer.component';
-import { QuestionComponent } from './question/question.component';
-import {MatButtonModule, MatDialog, MatDialogModule, MatTableModule} from "@angular/material";
+import { QuestionComponent } from './components/question/question.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatCheckboxModule} from "@angular/material/typings/checkbox";
+import {FieldService} from "./services/field.service";
 
 
 
@@ -45,18 +46,14 @@ import {MatCheckboxModule} from "@angular/material/typings/checkbox";
     AnswerComponent,
     QuestionComponent,
 
-
-
   ],
   imports: [
     BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatTableModule,
+    MatDialogModule,MatButtonModule, MatCheckboxModule,BrowserAnimationsModule, MatTableModule,
   ],
-  providers: [AuthService,AccountService,UrlPermission],
+  entryComponents:[ AnswerComponent,
+    QuestionComponent,],
+  providers: [AuthService,AccountService,UrlPermission,FieldService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
