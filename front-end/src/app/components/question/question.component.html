@@ -9,7 +9,7 @@
       <nav class="menu">
         <ul>
           <li><a [routerLink]="['/fields']" >Fields</a></li>
-          <li><a href="responses">Responses</a></li>
+          <li><a [routerLink]="['/responses']" >Responses</a></li>
           <li><a href="#"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
             <ul class="submenu">
               <li><a [routerLink]="['/edit-profile']" >Edit profile</a></li>
@@ -25,40 +25,98 @@
 
 
   <div >
-
-    <div class="section">
+    <div class="center-block">
       <div class="enter-form">
-        <div style="padding: 20px;">
+        <div style="padding: 20px;" class="left">
+          <p class="labels">Fields</p>
           <div *ngIf="questions">
 
-            <ul class="heroes">
-              <li *ngFor="let quest of questions"
-                  [class.selected]="quest === selectedQuestion"
-                  (click)="onSelectQuest(quest)" style="margin-bottom:20px;">
-                <span class="badge">
-                  {{quest.id}} {{quest.type}} {{quest.input}}
-                </span>
-              </li>
-            </ul>
+
+            <div class="example-container mat-elevation-z8">
+
+              <mat-table #table [dataSource]="dataSource">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- label Column -->
+                <ng-container matColumnDef="label">
+                  <mat-header-cell *matHeaderCellDef class="labels"> Label </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.label}} </mat-cell>
+                </ng-container>
+
+                <!-- type Column -->
+                <ng-container matColumnDef="type">
+                  <mat-header-cell *matHeaderCellDef class="labels"> Type </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+                </ng-container>
+
+                <!-- required Column -->
+                <ng-container matColumnDef="required">
+                  <mat-header-cell *matHeaderCellDef class="labels"> Required </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.required}} </mat-cell>
+                </ng-container>
+
+<!--                 Symbol Column -->
+                <ng-container matColumnDef="isActive">
+                  <mat-header-cell *matHeaderCellDef class="labels"> isActive </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.isActive}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+<!--                  <mat-cell *matCellDef="let row; le" >-->
+<!--                    <button mat-button >Edit</button>-->
+<!--                    <button mat-button >Delete</button>-->
+<!--                  </mat-cell>-->
+
+                  <mat-cell *matCellDef="let element;  let j = index;">
+                    <button mat-raised-button  color="warn" focusable="false" (click)="deleteRow(j)">
+                      <i class="fa fa-times mat-icon"></i> Remove
+                    </button>
+                  </mat-cell>
+
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+
+<!--            <ul class="heroes">-->
+<!--              <li *ngFor="let quest of questions"-->
+<!--                  [class.selected]="quest === selectedQuestion"-->
+<!--                  (click)="onSelectQuest(quest)" style="margin-bottom:20px;">-->
+<!--                <span class="badge">-->
+<!--                  {{quest.id}} {{quest.type}} {{quest.input}}-->
+<!--                </span>-->
+<!--              </li>-->
+<!--            </ul>-->
 
           </div>
 
 
 
-          <label>
-            <select name="fieldType"  [(ngModel)]="question.type" #type="ngModel">
-              <option [selected]="type" value="textLine">TextLine</option>
-              <option value="radioButton">radioButton</option>
-              <option value="comboBox">comboBox</option>
-              ...
-            </select>
-          </label>
+<!--          <label>-->
+<!--            <select name="fieldType"  [(ngModel)]="question.type" #type="ngModel">-->
+<!--              <option [selected]="type" value="textLine">TextLine</option>-->
+<!--              <option value="radioButton">radioButton</option>-->
+<!--              <option value="comboBox">comboBox</option>-->
+<!--              ...-->
+<!--            </select>-->
+<!--          </label>-->
+
+
 
         </div>
       </div>
+
     </div>
 
-    <!--Изменить работника-->
+
+
+
+    <!--Изменить -->
     <div *ngIf="selectedQuestion">
 
       <h2>Правка {{selectedQuestion.type | uppercase}} {{selectedQuestion.id}}</h2>
@@ -113,6 +171,7 @@
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Обновить работников</button>
         <br>
       </form>
+
       <button  class="btn btn-lg btn-danger btn-block btn-cancel" type="button" (click)="deleteWorker()">Удалить парня</button>
     </div>
 
