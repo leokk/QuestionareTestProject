@@ -1,26 +1,53 @@
-/*.mat-dialog-container {*/
-/*  display: flex !important;*/
-/*  flex-direction: column;*/
+.mat-dialog-container {
+  position: fixed;
+  background-color: #CFD8DC;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px;
+  width: 500px !important;
+  height: 300px !important;
+}
 
-/*}*/
+.backdropBackground{
+  display: none!important;
+}
 
-/*.mat-dialog-container > * {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*}*/
-
-/*.mat-dialog-content {*/
-/*  max-height: inherit !important;*/
-/*}*/
-
-/*.mat-dialog-actions {*/
-/*  display: block !important;*/
-/*  flex-grow: inherit;*/
-/*  flex-shrink: inherit;*/
-/*  padding: 12px 0 0 !important;*/
-
-/*}*/
+.mat-paginator-page-size{
+  display: none !important;
+}
 .labels{
   font-weight: bold;
 }
 
+table {
+  width: 100%!important;
+}
+th
+{
+  color: #ffffff;
+  background-color: #2D73C3;
+}
+::ng-deep .mat-paginator-page-size-select {
+  width: 27px!important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent;
+}
+
+::ng-deep .mat-select-value {
+  color: #005999;
+  font-weight: bold;
+  font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+  color: #005999;
+}
+::ng-deep .mat-option{
+  padding: 0!important;
+
+}
+::ng-deep .mat-option-text {
+
+  text-align: right;
+}

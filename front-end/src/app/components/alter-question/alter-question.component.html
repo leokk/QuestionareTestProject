@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Edit Field</h1>
+<form name="form-update" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
+
+  <div class="row" [ngClass]="{ 'has-error': f.submitted && !label.valid }">
+    <div class="col-md-3">Label</div>
+    <div class="col"><input type="text" name="label" value="{{question.label}}" [(ngModel)]="question.label" #label="ngModel" required></div>
+    <div *ngIf="f.submitted && !label.valid" class="help-block">The label is required</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">Type</div>
+    <div class="col">
+      <select name="fieldType"  [(ngModel)]="question.type"  #type="ngModel" required >
+          <option [selected]="type" value="textLine">TextLine</option>
+          <option value="RadioButton">RadioButton</option>
+          <option value="Combobox">Combobox</option>
+          <option value="Date">Date</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="question.type=='textLine'"></div>
+
+  <div *ngIf="question.type=='Combobox'||question.type=='RadioButton'">
+
+    <div class="row"[ngClass]="{ 'has-error': f.submitted && !input.valid }">
+      <div class="col-md-3">Options</div>
+      <div class="col-md-8">
+        <div *ngIf="f.submitted && !input.valid" class="help-block">input is required</div>
+        <textarea matInput
+                  [(ngModel)]="question.input" #input="ngModel"
+                  name="type"
+                  value="{{question.input}}"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="5" required>
+        </textarea>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="question.type=='Date'"></div>
+
+  <div class="row" >
+    <div class="col-md-3">Required</div>
+    <div class="col" ><input  type="checkBox" value="{{question.required}}" [(ngModel)]="question.required" name="req"></div>
+    <div class="col-md-3">Is Active</div>
+    <div class="col"><input  type="checkBox" value="{{question.active}}" [(ngModel)]="question.active" name="active"></div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button type="submit" cdkFocusInitial>Ok</button>
+  </div>
+</form>

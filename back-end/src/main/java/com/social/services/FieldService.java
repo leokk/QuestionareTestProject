@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class FieldService {
@@ -27,8 +28,10 @@ public class FieldService {
         User user = userRepository.findById(id);
         if(user==null)
             return null;
-        else
+        else{
             return questionRepository.findAllByUser(user);
+        }
+
 
     }
     public List<Answer> getAnswersByUserIds(Long idA, Long idQ) {
@@ -39,5 +42,18 @@ public class FieldService {
         //todo Pay attention
         else
             return answerRepository.findFieldByUserId(idA,idQ);
+    }
+
+    public Question saveQuestion(Question question, long id) {
+//        User user = userRepository.findById(id);
+//        Set<Question> questions = user.getQuestions();
+//        questions.add(question);
+//        user.setQuestions(questions);
+//        question.setUser(userRepository.findById(id));
+//        questionRepository.save()
+//        return userRepository.save(user);
+
+        question.setUser(userRepository.findById(id));
+        return questionRepository.saveAndFlush(question);
     }
 }

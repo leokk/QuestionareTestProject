@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {AppComponent} from "../app.component";
 import {Observable} from "rxjs";
 import {FieldUser} from "../model/model.field-user";
+import {Question} from "../model/model.Question";
 
 @Injectable()
 export class FieldService {
@@ -10,6 +11,10 @@ export class FieldService {
 
   getFieldList(id:number):Observable<any> {
     return this.http.get(AppComponent.API_URL+`/account/field/${id}`);
+  }
+
+  createQuestion(question:Question,id:number){
+    return this.http.post(AppComponent.API_URL+`/account/field/create/${id}`,question).map(resp=>resp.json());
   }
 
   findAllQuestions(id:number): Observable<any> {

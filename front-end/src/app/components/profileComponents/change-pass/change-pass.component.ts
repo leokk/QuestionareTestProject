@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AppComponent} from "../../app.component";
+import {AppComponent} from "../../../app.component";
 import {Http} from "@angular/http";
-import {AccountService} from "../../services/account.service";
-import {User} from "../../model/model.user";
+import {AccountService} from "../../../services/account.service";
+import {User} from "../../../model/model.user";
 import {Router} from "@angular/router";
-import {Pass} from "../../model/model.pass";
+import {Pass} from "../../../model/model.pass";
 
 @Component({
   selector: 'app-change-pass',

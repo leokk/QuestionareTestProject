@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {WorkerService} from "../../services/worker.service";
-import {SrvService} from "../../services/srv.service";
+import {WorkerService} from "../../../services/worker.service";
+import {SrvService} from "../../../services/srv.service";
 import {Router} from "@angular/router";
-import {AccountService} from "../../services/account.service";
-import {User} from "../../model/model.user";
+import {AccountService} from "../../../services/account.service";
+import {User} from "../../../model/model.user";
 
 @Component({
   selector: 'app-change-service',

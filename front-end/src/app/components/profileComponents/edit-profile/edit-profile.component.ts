@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {User} from "../../model/model.user";
+import {User} from "../../../model/model.user";
 import {Router} from "@angular/router";
-import {AccountService} from "../../services/account.service";
+import {AccountService} from "../../../services/account.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -21,6 +21,7 @@ export class EditProfileComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
   updateUser() {

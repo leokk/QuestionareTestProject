@@ -1,5 +1,7 @@
 package com.social.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -68,10 +70,11 @@ public class Question {
         this.input = input;
     }
 
+    @JsonIgnore
     public User getUser() {
         return user;
     }
-
+    @JsonIgnore
     public void setUser(User user) {
         this.user = user;
     }

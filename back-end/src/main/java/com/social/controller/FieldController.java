@@ -1,8 +1,6 @@
 package com.social.controller;
 
-import com.social.entities.Answer;
-import com.social.entities.Question;
-import com.social.entities.Service;
+import com.social.entities.*;
 import com.social.services.FieldService;
 import com.social.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +23,16 @@ public class FieldController {
         this.fieldService = fieldService;
     }
 
-
+    @PostMapping(value = "field/create/{id}")
+    public ResponseEntity<?> addQuestion(@RequestBody Question question, @PathVariable("id") long id) {
+        return new ResponseEntity<>(fieldService.saveQuestion(question,id), HttpStatus.OK);
+    }
     @GetMapping(value = "field/{id}")
     public ResponseEntity<?> getQuestionByUserId(@PathVariable("id")Long id) {
+        return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
+    }
+    @PutMapping(value = "field/{id}")
+    public ResponseEntity<?> PutQuestionByUserId(@PathVariable("id")Long id) {
         return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
     }
 }

@@ -18,7 +18,7 @@ insert into servicess values(103,300,'Занятия 1 раз в неделю ',
 
 insert into customer values(1000,1,'ssd@msd','Administrator',null,'1234',1,'ADMIN',1,101)
 
-insert into question values(1000,true,'simple text for demonstrate it works','Заголовок',true,'textBox',1000)
+insert into question values(1000,true,'simple text for demonstrate it works','Заголовок',true,'textLine',1000)
 
-insert into question values(1001,true,'and another one','Заголовок2',true,'textBox',1000)
+insert into question values(1001,true,'and another one','Заголовок2',true,'textLine',1000)
 

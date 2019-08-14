@@ -1,13 +1,13 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {User} from "../../model/model.user";
+import {AuthService} from "../../../services/auth.service";
+import {User} from "../../../model/model.user";
 import {Router} from "@angular/router";
-import {WorkerService} from "../../services/worker.service";
-import {SrvService} from "../../services/srv.service";
-import {AccountService} from "../../services/account.service";
-import {Service} from "../../model/model.srv";
+import {WorkerService} from "../../../services/worker.service";
+import {SrvService} from "../../../services/srv.service";
+import {AccountService} from "../../../services/account.service";
+import {Service} from "../../../model/model.srv";
 import {MatDialog} from "@angular/material";
-import {QuestionComponent} from "../question/question.component";
+import {QuestionComponent} from "../../question/question.component";
 
 @Component({
   selector: 'app-profile',

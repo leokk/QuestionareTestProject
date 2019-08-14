@@ -1,9 +1,9 @@
 import {Component, Injectable, OnInit, ViewEncapsulation} from '@angular/core';
-import {Worker} from "../../model/model.worker";
-import {WorkerService} from "../../services/worker.service";
+import {Worker} from "../../../model/model.worker";
+import {WorkerService} from "../../../services/worker.service";
 import {Router} from "@angular/router";
-import {SrvService} from "../../services/srv.service";
-import {Service} from "../../model/model.srv";
+import {SrvService} from "../../../services/srv.service";
+import {Service} from "../../../model/model.srv";
 
 @Injectable()
 @Component({
