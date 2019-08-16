@@ -12,8 +12,6 @@ import java.util.List;
 public class PaymentService {
 private final
 PaymentRepository paymentRepository;
-
-
     @Autowired
     public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;

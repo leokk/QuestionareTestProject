@@ -79,19 +79,18 @@ public class Question {
         this.user = user;
     }
 
-    @JsonIgnore
-    public Answer getAnswer() {
+    public Set<Answer> getAnswer() {
         return answer;
     }
-    @JsonIgnore
-    public void setAnswer(Answer answer) {
+
+    public void setAnswer(Set<Answer> answer) {
         this.answer = answer;
     }
 
     public Question() {
     }
-    @JsonIgnore
-    @OneToOne(mappedBy = "question", cascade = {CascadeType.ALL},orphanRemoval = true)
-    private Answer answer;
+
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL},orphanRemoval = true)
+    private Set<Answer> answer;
 
 }

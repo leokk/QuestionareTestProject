@@ -30,16 +30,52 @@
     <div class="enter-form">
       <div style="padding: 20px;     width: -webkit-fill-available;" *ngIf="answers">
 
-        <form name="form-update" (ngSubmit)="f.form.valid && addAnswer()" #f="ngForm" novalidate>
+        <form name="form-update" (ngSubmit)="f.form.valid && addResponse()" #f="ngForm" novalidate>
+
           <div *ngFor="let quest of questions;let i = index">
-            <div class="form-group " [ngClass]="{ 'has-error': f.submitted && !answers[i].input}">
-              <label>{{quest.label}}</label>
-              <input [type]="quest.type" [name]="quest.label" [(ngModel)]="answers[i].input"
-              [required]="quest.required">
+            <label>{{quest.label}}</label>
+
+            <div *ngIf="quest.type=='textLine'" class="form-group "  [ngClass]="{ 'has-error': (f.submitted && !input.valid)} ">
+              <input type="text" [name]="quest.label" [(ngModel)]="answers[i].input" #input="ngModel"
+                     [required]="quest.required">
             </div>
+
+            <div *ngIf="quest.type=='Combobox'" class="form-group "  [ngClass]="{ 'has-error': (f.submitted && !input.valid)} ">
+              <select name="fieldType"  [(ngModel)]="answers[i].input"  #input="ngModel" [required]="quest.required" >
+                <option *ngFor="let q of getOptions(quest,i)"
+                        [value]="q"
+                        [attr.selected]="getOptions(quest,i)[0]">
+                        {{q}}
+                </option>
+              </select>
+            </div>
+
+            <div *ngIf="quest.type=='RadioButton'"  class="form-group "  >
+              <div *ngFor="let q of getOptions(quest,i)">
+                  <input id="{{q}}" [value]='q' type="radio" [name]="quest.label" [(ngModel)]="answers[i].input">
+                  {{q}}
+              </div>
+            </div>
+<!--            <div *ngIf="quest.type=='RadioButton'"  class="form-group "  >-->
+<!--              <div *ngFor="let q of getOptions(quest)" [ngClass]="{ 'has-error': (f.submitted && !input.valid)} ">-->
+<!--                <input type="radio" [name]="quest.label" [(ngModel)]="answers[i].input" #input="ngModel"-->
+<!--                       [required]="quest.required">{{q}}-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+
           </div>
 
+          <div *ngIf="f.submitted && !f.valid" class="help-block">
+            <div *ngFor="let a of answers; let j=index">
+              <div *ngIf="questions[j].required&&a.input==''">
+                Заполните '{{questions[j].label}}'
+              </div>
+            </div>
+          </div>
           <button type="submit">Ok</button>
+
         </form>
       </div>
     </div>

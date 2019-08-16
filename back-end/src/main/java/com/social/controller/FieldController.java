@@ -40,5 +40,9 @@ public class FieldController {
     public ResponseEntity<?> getAnswersByUserId(@PathVariable("id")Long id) {
         return new ResponseEntity<>(fieldService.getAnswersByUserId(id), HttpStatus.OK);
     }
+    @PostMapping(value = "response/create/{id}")
+    public ResponseEntity<?> getAnswersByUserId(@PathVariable("id")Long id,@RequestBody List<Question> questions) {
+        return new ResponseEntity<>(fieldService.setResponseByUserId(id,questions), HttpStatus.OK);
+    }
 
 }

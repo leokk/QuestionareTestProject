@@ -1,3 +1,5 @@
+import {Question} from "./model.Question";
+
 export class Answer {
   id:number;
   type:string;

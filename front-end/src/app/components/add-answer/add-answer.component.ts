@@ -46,7 +46,7 @@ export class AddAnswerComponent implements OnInit {
       this.answers.push(new Answer());
         console.log(`data[${i}] :`);
         console.log(data[i]);
-        //this.answers[i].input="";
+        this.answers[i].input="";
       }
     console.log(this.answers);
   }
@@ -58,8 +58,6 @@ export class AddAnswerComponent implements OnInit {
   findAllQuestions(){
     this.fieldService.findAllQuestions(this.currentUser.id).subscribe(data=>{
       this.questions=data;
-      this.questions[0].type='text';
-      this.questions[1].type='text';
       this.prepare(data);
     },error => {
       console.log(error);
@@ -68,6 +66,35 @@ export class AddAnswerComponent implements OnInit {
   }
 
   addAnswer() {
-    return false;
+    console.log('MESSSAGAAAAAAAAAAAAAAAAAAAAA');
+    console.log(this.answers);
+  }
+
+  getOptions(quest: Question,index:number):string[] {
+
+    var v =quest.input.split('\n');
+    if(!quest.required)
+      v.push("");
+    // for (var i = 0, len = this.answers.length; i < len; i++) {
+    //   this.answers[i].
+    // }
+    return v;
+  }
+  updateQuestions(){
+    for (var i = 0, len = this.answers.length; i < len; i++) {
+      this.questions[i].answer=this.answers[i];
+    }
+  }
+
+  addResponse() {
+
+    this.updateQuestions();
+    console.log(this.questions);
+    this.fieldService.createResponse(this.questions, this.currentUser.id).subscribe(data=>{
+      console.log(data);
+      alert("Response Added");
+    }, err=>{
+      this.errorMessage=err;
+    })
   }
 }

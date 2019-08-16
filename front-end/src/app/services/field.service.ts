@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {FieldUser} from "../model/model.field-user";
 import {Question} from "../model/model.Question";
 import {User} from "../model/model.user";
+import {Answer} from "../model/model.Answer";
 
 @Injectable()
 export class FieldService {
@@ -16,6 +17,9 @@ export class FieldService {
 
   createQuestion(question:Question,id:number){
     return this.http.post(AppComponent.API_URL+`/account/field/create/${id}`,question).map(resp=>resp.json());
+  }
+  createResponse(question:Question[],id:number){
+    return this.http.post(AppComponent.API_URL+`/account/response/create/${id}`,question).map(resp=>resp.json());
   }
 
   findAllQuestions(id:number): Observable<any> {

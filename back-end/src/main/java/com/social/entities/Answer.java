@@ -1,5 +1,7 @@
 package com.social.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,6 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    private String type;
     private String input;
 
 
@@ -49,14 +50,6 @@ public class Answer {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getInput() {
         return input;
     }
@@ -72,11 +65,11 @@ public class Answer {
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
-
+    @JsonIgnore
     public Question getQuestion() {
         return question;
     }
-
+    @JsonIgnore
     public void setQuestion(Question question) {
         this.question = question;
     }
@@ -84,7 +77,8 @@ public class Answer {
     public Answer() {
     }
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "question_id")
+    @JsonIgnore
     private Question question;
 }

@@ -1,4 +1,5 @@
 import {Answer} from "./model.Answer";
+import {User} from "./model.user";
 
 export class Question {
   id:number;
@@ -7,5 +8,6 @@ export class Question {
   label:string;
   active:boolean;
   required:boolean;
-  answer:Answer
+  answer:Answer;
+  user:User;
 }

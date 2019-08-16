@@ -38,6 +38,11 @@ public class FieldService {
         return answerRepository.findAnswerByUserId(id);
     }
 
+    public List<Answer> SetAnswersByUserId(List<Answer>answers,Long id) {
+//        for(int i=0; i<answers.size(); ++i);
+        return answerRepository.save(answers);
+    }
+
     public Question saveQuestion(Question question, long id) {
 //        User user = userRepository.findById(id);
 //        Set<Question> questions = user.getQuestions();
@@ -49,5 +54,14 @@ public class FieldService {
 
         question.setUser(userRepository.findById(id));
         return questionRepository.saveAndFlush(question);
+    }
+
+    public List<Question> setResponseByUserId(Long id, List<Question> question) {
+//        for (int i=0; i<question.size(); ++i){
+//            question.get(i)
+//        }
+        User user = userRepository.findById(id);
+
+        return questionRepository.save(question);
     }
 }
