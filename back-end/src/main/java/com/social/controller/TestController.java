@@ -1,5 +1,8 @@
 package com.social.controller;
 
+import com.social.dao.AnswerRepository;
+import com.social.dao.QuestionRepository;
+import com.social.entities.Answer;
 import com.social.entities.Service;
 import com.social.services.SrvService;
 import com.social.services.UserService;
@@ -15,6 +18,10 @@ import java.util.List;
 public class TestController {
     private final WorkerService workerService;
     private final UserService userService;
+    @Autowired
+    AnswerRepository  answerRepository;
+    @Autowired
+    QuestionRepository questionRepository;
     private final
     SrvService srvService;
     @Autowired
@@ -25,22 +32,13 @@ public class TestController {
     }
 
     @GetMapping("Test")
-    public List<Service> Generate(){
-//        Worker w=new Worker(12,"Ali","Baba","+380000000", 3000,"kura");
-        //Worker w = workerService.findOne((long)1);
-//        User u = new User(1,"2@2","pwd","fname","Lname","+3909090",null,1);
-//        User S = userService.find((long) 1);
-//        userService.save(u);
-     //   w.setFirstName("NEW Fn Name");
-//        userService.updateAll(u);
-//        workerService.update(w);
-//        this.age = age;
-//        this.email = email;
-//        this.password = password;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.phone = phone;
-//        this.service = service;
-        return srvService.findAllServices();
+    public Answer Generate(){
+        Answer answer = new Answer();
+        answer.setId((long) 1);
+        answer.setType("textLine");
+        answer.setQuestion(questionRepository.findOne((long) 1000));
+     //   answer.setActive(true);
+
+        return answerRepository.save(answer);
     }
 }

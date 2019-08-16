@@ -1,0 +1,51 @@
+<head>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="container ">
+    <div class="heading">
+      <div class="logotype">
+        <div class="logo">Logo<div class="type">Type</div></div>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a [routerLink]="['/fields']" >Fields</a></li>
+          <li><a [routerLink]="['/responses']" >Responses</a></li>
+          <li><a href="#"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/edit-profile']" >Edit profile</a></li>
+              <li><a [routerLink]="['/change-pass']" >Change password</a></li>
+              <!--              <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a></li>-->
+            </ul>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+  <div class="center-block">
+    <div class="enter-form">
+      <div style="padding: 20px;     width: -webkit-fill-available;" *ngIf="answers">
+
+        <form name="form-update" (ngSubmit)="f.form.valid && addAnswer()" #f="ngForm" novalidate>
+          <div *ngFor="let quest of questions;let i = index">
+            <div class="form-group " [ngClass]="{ 'has-error': f.submitted && !answers[i].input}">
+              <label>{{quest.label}}</label>
+              <input [type]="quest.type" [name]="quest.label" [(ngModel)]="answers[i].input"
+              [required]="quest.required">
+            </div>
+          </div>
+
+          <button type="submit">Ok</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+

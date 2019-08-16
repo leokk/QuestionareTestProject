@@ -49,8 +49,8 @@ public  class User implements UserDetails{
 	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
 	private Set<Question> questions;
 
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-	private Set<Answer> answers;
+//	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+//	private Set<Answer> answers;
 
 	public Set<Question> getQuestions() {
 		return questions;
@@ -60,13 +60,13 @@ public  class User implements UserDetails{
 		this.questions = questions;
 	}
 
-	public Set<Answer> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(Set<Answer> answers) {
-		this.answers = answers;
-	}
+//	public Set<Answer> getAnswers() {
+//		return answers;
+//	}
+//
+//	public void setAnswers(Set<Answer> answers) {
+//		this.answers = answers;
+//	}
 
 	public Service getService() {
 		return service;

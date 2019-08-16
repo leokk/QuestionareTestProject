@@ -13,16 +13,13 @@ export class AlterQuestionComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AlterQuestionComponent>,
               @Inject(MAT_DIALOG_DATA) public data:Question ,overlayContainer: OverlayContainer) {
-    this.question=this.data.question;
+    this.question=this.data;
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
   }
   question:Question;
-  fff:string;
-  fieldType:string='textLine';
 
   ngOnInit() {
-    console.log('question from alter  ');
-
+    console.log('question from alter  is');
     console.log(this.question);
   }
   save() {

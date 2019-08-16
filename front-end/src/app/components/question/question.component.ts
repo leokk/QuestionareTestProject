@@ -49,7 +49,8 @@ export class QuestionComponent implements OnInit {
   openEditRowDialog(j:number): void {
     this.question=this.questions[j];
     const dialogRef = this.dialog.open(AlterQuestionComponent, {
-      data: {question:this.question},
+      data: {id:this.question.id,type:this.question.type, input:this.question.input, active:this.question.active,
+          required:this.question.required,label:this.question.label},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -112,9 +113,6 @@ export class QuestionComponent implements OnInit {
 
   }
 
-  editRow(j: any) {
-    this.question=this.questions[j];
-  }
 
   openAddQuestionDialog() {
     const AdddialogRef = this.dialog.open(AddQuestionComponent, {

@@ -33,6 +33,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FieldService} from "./services/field.service";
 import { AlterQuestionComponent } from './components/alter-question/alter-question.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
+import { AddAnswerComponent } from './components/add-answer/add-answer.component';
 
 
 
@@ -56,6 +57,7 @@ import { AddQuestionComponent } from './components/add-question/add-question.com
     QuestionComponent,
     AlterQuestionComponent,
     AddQuestionComponent,
+    AddAnswerComponent,
 
   ],
   imports: [

@@ -34,14 +34,8 @@ public class FieldService {
 
 
     }
-    public List<Answer> getAnswersByUserIds(Long idA, Long idQ) {
-        User userA = userRepository.findById(idA);
-        User userQ = userRepository.findById(idQ);
-        if(userA==null||userQ==null)
-            return null;
-        //todo Pay attention
-        else
-            return answerRepository.findFieldByUserId(idA,idQ);
+    public List<Answer> getAnswersByUserId(Long id) {
+        return answerRepository.findAnswerByUserId(id);
     }
 
     public Question saveQuestion(Question question, long id) {

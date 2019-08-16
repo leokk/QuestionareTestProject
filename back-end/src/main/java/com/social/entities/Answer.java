@@ -11,37 +11,35 @@ public class Answer {
 
     private String type;
     private String input;
-    private String label;
-    private boolean active;
-    private boolean required;
 
-    public String getLabel() {
-        return label;
-    }
 
-    public void setLabel(String label) {
-        this.label = label;
-    }
+//    public String getLabel() {
+//        return label;
+//    }
+//
+//    public void setLabel(String label) {
+//        this.label = label;
+//    }
+//
+//    public boolean isActive() {
+//        return active;
+//    }
+//
+//    public void setActive(boolean active) {
+//        this.active = active;
+//    }
+//
+//    public boolean isRequired() {
+//        return required;
+//    }
+//
+//    public void setRequired(boolean required) {
+//        this.required = required;
+//    }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public boolean isRequired() {
-        return required;
-    }
-
-    public void setRequired(boolean required) {
-        this.required = required;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public Long getId() {
         return id;
@@ -67,13 +65,13 @@ public class Answer {
         this.input = input;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Question getQuestion() {
         return question;

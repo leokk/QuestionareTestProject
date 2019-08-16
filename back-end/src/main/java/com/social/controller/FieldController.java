@@ -35,4 +35,10 @@ public class FieldController {
     public ResponseEntity<?> PutQuestionByUserId(@PathVariable("id")Long id) {
         return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
     }
+
+    @GetMapping(value = "response/")
+    public ResponseEntity<?> getAnswersByUserId(@PathVariable("id")Long id) {
+        return new ResponseEntity<>(fieldService.getAnswersByUserId(id), HttpStatus.OK);
+    }
+
 }

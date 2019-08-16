@@ -4,6 +4,7 @@ import {AppComponent} from "../app.component";
 import {Observable} from "rxjs";
 import {FieldUser} from "../model/model.field-user";
 import {Question} from "../model/model.Question";
+import {User} from "../model/model.user";
 
 @Injectable()
 export class FieldService {
@@ -19,6 +20,9 @@ export class FieldService {
 
   findAllQuestions(id:number): Observable<any> {
     return this.http.get(AppComponent.API_URL + `/account/field/${id}`).map(response => response.json());
+  }
+  findAllAnswers(id:number): Observable<any> {
+    return this.http.get(AppComponent.API_URL + `/account/response/${id}`).map(response => response.json());
   }
   //Todo: change with FieldUser
 

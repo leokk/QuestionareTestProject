@@ -10,6 +10,7 @@ import {AdminComponent} from "./components/profileComponents/admin/admin.compone
 import {ManagerComponent} from "./components/profileComponents/manager/manager.component";
 import {QuestionComponent} from "./components/question/question.component";
 import {AnswerComponent} from "./components/answer/answer.component";
+import {AddAnswerComponent} from "./components/add-answer/add-answer.component";
 
 
 const appRoutes: Routes = [
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'manager', component: ManagerComponent},
   {path: 'fields', component: QuestionComponent},
-  {path: 'responses', component: AnswerComponent},
+  {path: 'responses', component: AddAnswerComponent},
 
   {path: 'profile/admin', redirectTo: '/admin'},
   {path: 'profile/manager', redirectTo: '/manager'},

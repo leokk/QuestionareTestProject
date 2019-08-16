@@ -1,3 +1,102 @@
-<p>
-  answer works!
-</p>
+<head>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="container ">
+    <div class="heading">
+      <div class="logotype">
+        <div class="logo">Logo<div class="type">Type</div></div>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a [routerLink]="['/fields']" >Fields</a></li>
+          <li><a [routerLink]="['/responses']" >Responses</a></li>
+          <li><a href="#"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/edit-profile']" >Edit profile</a></li>
+              <li><a [routerLink]="['/change-pass']" >Change password</a></li>
+              <!--              <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a></li>-->
+            </ul>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="clickedSrv">
+  <div class="center-block">
+    <div class="enter-form">
+      <div style="padding: 20px;     width: -webkit-fill-available;">
+        <div style="float: left" class="labels">Responses</div>
+
+        <div *ngIf="answers">
+
+          <div class="example-container mat-elevation-z8">
+
+            <mat-table #table [dataSource]="dataSource">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- label Column -->
+              <ng-container matColumnDef="label">
+                <mat-header-cell *matHeaderCellDef class="labels"> Label </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.label}} </mat-cell>
+              </ng-container>
+
+              <!-- type Column -->
+              <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef class="labels"> Type </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+              </ng-container>
+
+              <!-- required Column -->
+              <ng-container matColumnDef="required">
+                <mat-header-cell *matHeaderCellDef class="labels"> Required </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.required}} </mat-cell>
+              </ng-container>
+
+              <!--                 Symbol Column -->
+              <ng-container matColumnDef="isActive">
+                <mat-header-cell *matHeaderCellDef class="labels"> isActive </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.active}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+
+                <mat-cell *matCellDef="let element; let j = index;">
+                  <button mat-button  color="warn" focusable="false" (click)="deleteRow(j)">
+                    <i class="fa fa-times mat-icon"></i> Remove
+                  </button>
+
+                  <button mat-button  color="warn" focusable="false" (click)="openEditRowDialog(j)">
+                    <i class="fa fa-times mat-icon"></i> Edit
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            </mat-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="   width:250px; max-width:250px; display: inline-block;">
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+  </div>
+
+</div>
+
+</body>
+
+
+
