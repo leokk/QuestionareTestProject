@@ -9,6 +9,7 @@ import com.social.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -57,11 +58,13 @@ public class FieldService {
     }
 
     public List<Question> setResponseByUserId(Long id, List<Question> question) {
-//        for (int i=0; i<question.size(); ++i){
-//            question.get(i)
-//        }
-        User user = userRepository.findById(id);
-
-        return questionRepository.save(question);
+        List<Question> q = questionRepository.findAllByUser(userRepository.findById(id));
+        for (int i=0; i<question.size(); ++i){
+            List<Answer> a = new ArrayList<>(q.get(i).getAnswer());
+            a.add(question.get(i).getAnswer().get(0));
+            q.get(i).setAnswer(null);
+            q.get(i).setAnswer(a);
+        }
+        return questionRepository.save(q);
     }
 }

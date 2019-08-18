@@ -1,8 +1,10 @@
 package com.social.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -79,18 +81,22 @@ public class Question {
         this.user = user;
     }
 
-    public Set<Answer> getAnswer() {
-        return answer;
-    }
 
-    public void setAnswer(Set<Answer> answer) {
-        this.answer = answer;
-    }
 
     public Question() {
     }
 
-    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL},orphanRemoval = true)
-    private Set<Answer> answer;
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL},orphanRemoval = true, fetch = FetchType.EAGER)
+    @Cascade(value={org.hibernate.annotations.CascadeType.ALL})
+    private List<Answer> answer;
 
+    public List<Answer> getAnswer() {
+        return answer;
+    }
+
+
+    public void setAnswer(List<Answer> answer) {
+        this.answer.clear();
+        this.answer = answer;
+    }
 }

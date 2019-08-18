@@ -65,6 +65,9 @@ public class Answer {
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
+
+    public Answer() {
+    }
     @JsonIgnore
     public Question getQuestion() {
         return question;
@@ -72,9 +75,6 @@ public class Answer {
     @JsonIgnore
     public void setQuestion(Question question) {
         this.question = question;
-    }
-
-    public Answer() {
     }
 
     @ManyToOne

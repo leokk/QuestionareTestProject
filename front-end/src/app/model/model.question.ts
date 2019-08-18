@@ -8,6 +8,6 @@ export class Question {
   label:string;
   active:boolean;
   required:boolean;
-  answer:Answer;
+  answer:Answer[];
   user:User;
 }

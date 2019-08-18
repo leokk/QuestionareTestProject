@@ -72,6 +72,16 @@ export class QuestionComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  addResponse() {
+    console.log(  this.questions);
+    this.fieldService.createResponse(this.questions, this.currentUser.id).subscribe(data=>{
+      console.log(data);
+      alert("Response Added");
+    }, err=>{
+      this.errorMessage=err;
+    })
+  }
+
   findAllQuestions(){
     this.fieldService.findAllQuestions(this.currentUser.id).subscribe(data=>{
       this.questions=data;
@@ -80,6 +90,7 @@ export class QuestionComponent implements OnInit {
       console.log('paginator:');
       console.log(this.paginator);
       console.log(data);
+      this.addResponse();
     },error => {
        console.log(error);
       this.errorMessage = "Can`t get Question List or empty";

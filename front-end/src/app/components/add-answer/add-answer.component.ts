@@ -82,14 +82,13 @@ export class AddAnswerComponent implements OnInit {
   }
   updateQuestions(){
     for (var i = 0, len = this.answers.length; i < len; i++) {
-      this.questions[i].answer=this.answers[i];
+      this.questions[i].answer.push(this.answers[i]);
     }
   }
 
   addResponse() {
-
     this.updateQuestions();
-    console.log(this.questions);
+    console.log(JSON.stringify(  this.questions));
     this.fieldService.createResponse(this.questions, this.currentUser.id).subscribe(data=>{
       console.log(data);
       alert("Response Added");

@@ -3,6 +3,7 @@ package com.social.controller;
 import com.social.dao.AnswerRepository;
 import com.social.dao.QuestionRepository;
 import com.social.entities.Answer;
+import com.social.entities.Question;
 import com.social.entities.Service;
 import com.social.services.SrvService;
 import com.social.services.UserService;
@@ -11,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 
@@ -32,13 +36,29 @@ public class TestController {
     }
 
     @GetMapping("Test")
-    public Answer Generate(){
+    public List<Question> Generate(){
+        List<Answer> answers=new ArrayList<>();
         Answer answer = new Answer();
-        answer.setId((long) 1);
-        answer.setType("textLine");
-        answer.setQuestion(questionRepository.findOne((long) 1000));
-     //   answer.setActive(true);
+        answer.setInput("Answer1 input");
 
-        return answerRepository.save(answer);
+
+//      //  answer.setType("textLine");
+//     //   answer.setActive(true);
+        Question question = new Question();
+        question.setActive(true);
+        answer.setQuestion(question);
+        question.setId((long) 1);
+        question.setType("textLine");
+        question.setLabel("label");
+        answers.add(answer);
+        Answer answer2 = new Answer();
+        answer2.setInput("answer2");
+        answer2.setQuestion(question);
+        answers.add(answer2);
+        question.setAnswer(answers);
+
+        questionRepository.save(question);
+        //answerRepository.save(answers);
+        return questionRepository.findAllByUser(userService.find((long) 1));
     }
 }
