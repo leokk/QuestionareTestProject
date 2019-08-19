@@ -24,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'manager', component: ManagerComponent},
   {path: 'fields', component: QuestionComponent},
   {path: 'responses', component: AddAnswerComponent},
+  {path: 'answer', component: AnswerComponent},
 
   {path: 'profile/admin', redirectTo: '/admin'},
   {path: 'profile/manager', redirectTo: '/manager'},

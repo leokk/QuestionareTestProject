@@ -61,6 +61,14 @@ public class Answer {
 //    public User getUser() {
 //        return user;
 //    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", input='" + input + '\'' +
+                '}';
+    }
 //
 //    public void setUser(User user) {
 //        this.user = user;
@@ -68,11 +76,11 @@ public class Answer {
 
     public Answer() {
     }
-    @JsonIgnore
+
     public Question getQuestion() {
         return question;
     }
-    @JsonIgnore
+
     public void setQuestion(Question question) {
         this.question = question;
     }

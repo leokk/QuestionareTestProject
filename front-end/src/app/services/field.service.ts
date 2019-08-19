@@ -18,8 +18,12 @@ export class FieldService {
   createQuestion(question:Question,id:number){
     return this.http.post(AppComponent.API_URL+`/account/field/create/${id}`,question).map(resp=>resp.json());
   }
-  createResponse(question:Question[],id:number){
-    return this.http.post(AppComponent.API_URL+`/account/response/create/${id}`,question).map(resp=>resp.json());
+  createResponse(answer:Answer[],id:number){
+    return this.http.post(AppComponent.API_URL+`/account/response/create/${id}`,answer).map(resp=>resp.json());
+  }
+
+  getData(id:number): Observable<any> {
+    return this.http.get(AppComponent.API_URL + `/account/response/${id}`).map(response => response.json());
   }
 
   findAllQuestions(id:number): Observable<any> {

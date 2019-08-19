@@ -9,7 +9,7 @@
         <ul>
           <li><a [routerLink]="['/fields']" >Fields</a></li>
           <li><a href="responses">Responses</a></li>
-          <li><a href="#"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
+          <li><a [routerLink]="['/answer']"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
             <ul class="submenu">
               <li><a [routerLink]="['/edit-profile']" >Edit profile</a></li>
               <li><a [routerLink]="['/change-pass']" >Change password</a></li>

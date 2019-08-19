@@ -97,6 +97,6 @@ public class Question {
 
     public void setAnswer(List<Answer> answer) {
         this.answer.clear();
-        this.answer = answer;
+        this.answer.addAll(answer);
     }
 }

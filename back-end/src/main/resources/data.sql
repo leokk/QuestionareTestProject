@@ -22,5 +22,10 @@ insert into question values(1000,true,'simple text for demonstrate it works','З
 
 insert into question values(1001,true,'and another one','Заголовок2',true,'textLine',1000)
 
-insert into answer values(100,'first input',1000)
+insert into answer values(101,'first answer',1000)
 
+insert into answer values(102,'Another answer',1001)
+
+insert into answer values(103,'answer 2',1000)
+
+insert into answer values(104, 'Another answer 2',1001)
