@@ -57,7 +57,8 @@ export class AnswerComponent implements OnInit {
       this.customModel = data;
 
       this.dataSource.data = data;
-      console.log("DATASOURCE: " + this.dataSource.data);
+      console.log("DATASOURCE: " );
+      console.log(this.dataSource.data);
       this.getDisplayedColumns(data);
     },error => {
       console.log(error);

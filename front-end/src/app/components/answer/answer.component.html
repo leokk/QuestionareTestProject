@@ -40,7 +40,7 @@
 
             <ng-container *ngFor="let disCol of displayedColumns; let colIndex = index" matColumnDef="{{disCol}}">
               <mat-header-cell *matHeaderCellDef>{{disCol}}</mat-header-cell>
-              <mat-cell *matCellDef="let element "> {{element.disCol}}
+              <mat-cell *matCellDef="let element "> {{element[disCol]}}
               </mat-cell>
             </ng-container>
 

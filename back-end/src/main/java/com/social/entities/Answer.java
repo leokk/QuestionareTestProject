@@ -65,10 +65,16 @@ public class Answer {
     @Override
     public String toString() {
         return "Answer{" +
-                "id=" + id +
-                ", input='" + input + '\'' +
+                "input='" + input + '\'' +
                 '}';
     }
+
+//    @Override
+//    public String toString() {
+//        return "Answer{" + input+
+//                "='" + question.getLabel()+
+//                '}';
+//    }
 //
 //    public void setUser(User user) {
 //        this.user = user;
