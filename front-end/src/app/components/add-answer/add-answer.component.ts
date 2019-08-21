@@ -87,7 +87,14 @@ export class AddAnswerComponent implements OnInit {
   }
 
   addResponse() {
+
+    for(let i=0; i<this.answers.length; ++i){
+      if(this.answers[i].input=="")
+        this.answers[i].input="N/A";
+    }
+
     console.log(JSON.stringify(  this.answers));
+
     this.fieldService.createResponse(this.answers, this.currentUser.id).subscribe(data=>{
       console.log(data);
       alert("Response Added");

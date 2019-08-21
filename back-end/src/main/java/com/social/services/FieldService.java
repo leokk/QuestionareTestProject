@@ -47,16 +47,30 @@ public class FieldService {
     }
 
     public Question saveQuestion(Question question, long id) {
-//        User user = userRepository.findById(id);
-//        Set<Question> questions = user.getQuestions();
-//        questions.add(question);
-//        user.setQuestions(questions);
-//        question.setUser(userRepository.findById(id));
-//        questionRepository.save()
-//        return userRepository.save(user);
+        User user = userRepository.findById(id);
+        List<Answer> a = new ArrayList<>();
+        List<Question> q=questionRepository.findAllByUser(user);
+        Answer an = new Answer();
+        an.setInput("N/A");
+        int n=0;
+        int max=0;
+        for(int i=0; i<q.size(); ++i){
+            if(max<q.get(i).getAnswer().size())
+                max=q.get(i).getAnswer().size();
+        }
 
+//        question.setAnswer(max);
+
+
+        for(int i=0; i<max; ++i){
+//            an.setId((long) (i+1));
+            a.add(an);
+        }
+
+        question.setAnswer(a,0);
+        
         question.setUser(userRepository.findById(id));
-        return questionRepository.saveAndFlush(question);
+        return questionRepository.save(question);
     }
 
     public List<Question> setResponseByUserId(Long id, List<Answer> answers) {

@@ -28,8 +28,7 @@ public class FieldController {
         return new ResponseEntity<>(fieldService.saveQuestion(question,id), HttpStatus.OK);
     }
     @GetMapping(value = "field/{id}")
-    public ResponseEntity<?> getQuestionByUserId(@PathVariable("id")Long id) throws JSONException {
-        fieldService.createJson();
+    public ResponseEntity<?> getQuestionByUserId(@PathVariable("id")Long id) {
         return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
     }
     @PutMapping(value = "field/{id}")

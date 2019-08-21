@@ -18,14 +18,14 @@ insert into servicess values(103,300,'Занятия 1 раз в неделю ',
 
 insert into customer values(1000,1,'ssd@msd','Administrator',null,'1234',1,'ADMIN',1,101)
 
-insert into question values(1000,true,'simple text for demonstrate it works','Заголовок',true,'textLine',1000)
+insert into question values(1000,true,'simple text for demonstrate it works','Имя',true,'textLine',1000)
 
-insert into question values(1001,true,'and another one','Заголовок2',true,'textLine',1000)
+insert into question values(1001,true,'and another one','ФАМ',true,'textLine',1000)
 
-insert into answer values(101,'first answer',1000)
+insert into answer values(101,'Иван',1000)
 
-insert into answer values(102,'Another answer',1001)
+insert into answer values(102,'Иваныч',1001)
 
-insert into answer values(103,'answer 2',1000)
+insert into answer values(103,'Степан',1000)
 
-insert into answer values(104, 'Another answer 2',1001)
+insert into answer values(104, 'Степаныч',1001)

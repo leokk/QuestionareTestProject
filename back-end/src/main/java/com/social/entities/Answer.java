@@ -14,34 +14,6 @@ public class Answer {
     private String input;
 
 
-//    public String getLabel() {
-//        return label;
-//    }
-//
-//    public void setLabel(String label) {
-//        this.label = label;
-//    }
-//
-//    public boolean isActive() {
-//        return active;
-//    }
-//
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
-//
-//    public boolean isRequired() {
-//        return required;
-//    }
-//
-//    public void setRequired(boolean required) {
-//        this.required = required;
-//    }
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
     public Long getId() {
         return id;
     }
@@ -68,17 +40,6 @@ public class Answer {
                 "input='" + input + '\'' +
                 '}';
     }
-
-//    @Override
-//    public String toString() {
-//        return "Answer{" + input+
-//                "='" + question.getLabel()+
-//                '}';
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public Answer() {
     }

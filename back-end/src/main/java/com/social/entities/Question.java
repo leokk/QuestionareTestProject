@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -94,6 +95,11 @@ public class Question {
         return answer;
     }
 
+
+    public void setAnswer(List<Answer> a, int n){
+        this.answer = new ArrayList<>();
+        this.answer.addAll(a);
+    }
 
     public void setAnswer(List<Answer> answer) {
         this.answer.clear();
