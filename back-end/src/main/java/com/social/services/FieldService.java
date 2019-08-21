@@ -75,26 +75,23 @@ public class FieldService {
     }
 
     public String createJson() throws JSONException {
-
+        String str = "";
         List<Question> questions = questionRepository.findAllByUser(userRepository.findById(1000));
         JSONArray arr = new JSONArray();
         HashMap<String, JSONObject> map = new HashMap<String, JSONObject>();
 
-        for (int i = 0; i < questions.size(); i++){
-            for (int j = 0; j < questions.get(i).getAnswer().size(); j++) {
-
-                JSONObject json = new JSONObject();
-                json.accumulate(questions.get(i).getLabel(), questions.get(i).getAnswer().get(j).getInput());
+        for (int i = 0; i < questions.get(0).getAnswer().size(); ++i){
+            JSONObject json = new JSONObject();
+            for (int j = 0; j <  questions.size(); j++) {
+                json.accumulate(questions.get(j).getLabel(), questions.get(j).getAnswer().get(i).getInput());
 //                json.put(questions.get(i).getLabel(), questions.get(i).getAnswer());
-
-//                map.put("json" + i, json);
-//                arr.put(map.get("json" + i));
-
-                map.put("json" + i * questions.size() + j, json);
-                arr.put(map.get("json" + i * questions.size() + j));
+//                map.put("json" + i * questions.size() + j, json);
+//                arr.put(map.get("json" + i * questions.size() + j));
             }
+            map.put("json" + i, json);
+            arr.put(map.get("json" + i));
         }
-        String str = "";
+
         str = arr.toString();
 
         return str;
