@@ -84,21 +84,16 @@ export class AnswerComponent implements OnInit {
     for (var v in data) {
       for (var k in data[v]) {
         this.displayedColumns.push(k);
-
-        var dataa = k; console.log("k:"+dataa);
-        var key = dataa; console.log("key:"+key);
-        var objj :any= { [k]: k};
-        console.log("obьект :  "+objj[k]);
-       // this.dataSource.data.push(objj);
-        objj={};
       }
 
     }
     var unique = this.displayedColumns.filter(function(elem, index, self) {
       return index === self.indexOf(elem);
     });
+    this.dataSource.paginator=this.paginator;
     this.displayedColumns=unique;
     console.log("DisplayedColumn: " + this.displayedColumns);
+
     // console.log("DATASOURCE: " + this.dataSource.data);
   }
 
