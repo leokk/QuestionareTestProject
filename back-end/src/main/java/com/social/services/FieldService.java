@@ -49,26 +49,34 @@ public class FieldService {
     public Question saveQuestion(Question question, long id) {
         User user = userRepository.findById(id);
         List<Answer> a = new ArrayList<>();
+
+        question.setUser(user);
+        questionRepository.save(question);
+
         List<Question> q=questionRepository.findAllByUser(user);
-        Answer an = new Answer();
-        an.setInput("N/A");
-        int n=0;
-        int max=0;
-        for(int i=0; i<q.size(); ++i){
-            if(max<q.get(i).getAnswer().size())
-                max=q.get(i).getAnswer().size();
-        }
+        int max=q.size();
+
+
 
 //        question.setAnswer(max);
 
 
-        for(int i=0; i<max; ++i){
-//            an.setId((long) (i+1));
-            a.add(an);
+//        for(int i=0; i<max; ++i){
+//            Answer ans = new Answer();
+//            ans.setInput("N/A");
+//            ans.setQuestion(q.get(i));
+//            a.add(ans);
+//        }
+        for(int i=0; i<max-1; ++i){
+            Answer ans = new Answer();
+            ans.setInput("N/A");
+            ans.setQuestion(q.get(max-1));
+            a.add(ans);
         }
-
         question.setAnswer(a,0);
-        
+
+
+
         question.setUser(userRepository.findById(id));
         return questionRepository.save(question);
     }
@@ -97,10 +105,12 @@ public class FieldService {
         for (int i = 0; i < questions.get(0).getAnswer().size(); ++i){
             JSONObject json = new JSONObject();
             for (int j = 0; j <  questions.size(); j++) {
+//                if(questions.get(j).getAnswer().size())
                 json.accumulate(questions.get(j).getLabel(), questions.get(j).getAnswer().get(i).getInput());
 //                json.put(questions.get(i).getLabel(), questions.get(i).getAnswer());
 //                map.put("json" + i * questions.size() + j, json);
 //                arr.put(map.get("json" + i * questions.size() + j));
+
             }
             map.put("json" + i, json);
             arr.put(map.get("json" + i));
