@@ -87,7 +87,7 @@ public class Question {
     public Question() {
     }
 
-    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL},orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @Cascade(value={org.hibernate.annotations.CascadeType.ALL})
     private List<Answer> answer;
 

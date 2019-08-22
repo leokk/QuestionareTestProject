@@ -3,7 +3,9 @@ package com.social.dao;
 import com.social.entities.Answer;
 import com.social.entities.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,9 +20,15 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
 //For myself
 
-    @Query(value = "select answer.id,answer.input, answer.type,answer.question_id\n" +
+    @Query(value = "select answer.id,answer.input,answer.question_id\n" +
             "    from answer,question\n" +
             "    where answer.question_id = question.id\n" +
             "    and question.user_id =?1", nativeQuery = true)
     List<Answer> findAnswerByUserId(long id);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from answer where answer.question_id = ?1", nativeQuery = true)
+    void deleteAnswerByQuestion(long id);
 }

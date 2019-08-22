@@ -15,6 +15,13 @@ export class FieldService {
     return this.http.get(AppComponent.API_URL+`/account/field/${id}`);
   }
 
+  putFieldList(id:number,quest:Question):Observable<any> {
+    return this.http.post(AppComponent.API_URL+`/account/field/${id}`,quest);
+  }
+  deleteFieldList(id:number):Observable<any> {
+    return this.http.delete(AppComponent.API_URL+`/account/field/${id}`);
+  }
+
   createQuestion(question:Question,id:number){
     return this.http.post(AppComponent.API_URL+`/account/field/create/${id}`,question).map(resp=>resp.json());
   }

@@ -10,10 +10,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class FieldService {
@@ -54,26 +56,20 @@ public class FieldService {
         questionRepository.save(question);
 
         List<Question> q=questionRepository.findAllByUser(user);
-        int max=q.size();
+        int max=0;
+        if(q.size()>1){
+            max=q.get(0).getAnswer().size();
+        };
 
 
-
-//        question.setAnswer(max);
-
-
-//        for(int i=0; i<max; ++i){
-//            Answer ans = new Answer();
-//            ans.setInput("N/A");
-//            ans.setQuestion(q.get(i));
-//            a.add(ans);
-//        }
-        for(int i=0; i<max-1; ++i){
+        for(int i=0; i<max; ++i){
             Answer ans = new Answer();
             ans.setInput("N/A");
-            ans.setQuestion(q.get(max-1));
+            ans.setQuestion(q.get(q.size()-1));
             a.add(ans);
         }
-        question.setAnswer(a,0);
+        if(a.size()>0)
+            question.setAnswer(a,0);
 
 
 
@@ -96,9 +92,9 @@ public class FieldService {
         return questionRepository.save(q);
     }
 
-    public String createJson() throws JSONException {
+    public String createJson(Long id) throws JSONException {
         String str = "";
-        List<Question> questions = questionRepository.findAllByUser(userRepository.findById(1000));
+        List<Question> questions = questionRepository.findAllByUser(userRepository.findById(id));
         JSONArray arr = new JSONArray();
         HashMap<String, JSONObject> map = new HashMap<String, JSONObject>();
 
@@ -120,5 +116,23 @@ public class FieldService {
 
         return str;
     }
+
+    public Question updateQuestions(Long id, Question question) {
+        Question q = questionRepository.findOne(question.getId());
+        q.setLabel(question.getLabel());
+        q.setType(question.getType());
+        q.setInput(question.getInput());
+        q.setActive(question.isActive());
+        q.setRequired(question.isRequired());
+        return questionRepository.save(q);
+    }
+    @Transactional
+    public boolean deleteQuestion(Long id){
+        Question q = questionRepository.findOne(id);
+        answerRepository.deleteAnswerByQuestion(id);
+        questionRepository.deleteQuestionById(id);
+        return true;
+    }
+
 }
 

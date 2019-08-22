@@ -12,6 +12,8 @@ import {AlterQuestionComponent} from "../alter-question/alter-question.component
 import {OverlayContainer} from "@angular/cdk/overlay";
 import {AddQuestionComponent} from "../add-question/add-question.component";
 
+
+
 @NgModule({
   imports: [
     CdkTableModule,
@@ -55,6 +57,10 @@ export class QuestionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.questions[j]=result;
+      this.dataSource = new MatTableDataSource<Question>(this.questions);
+      this.dataSource.paginator = this.paginator;
+      this.putFieldList(j);
+
       console.log('The dialog was closed');
     });
   }
@@ -72,15 +78,15 @@ export class QuestionComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  addResponse() {
-    console.log(  this.questions);
-    this.fieldService.createResponse(this.questions, this.currentUser.id).subscribe(data=>{
+  putFieldList(id:number){
+    this.fieldService.putFieldList(this.currentUser.id,this.questions[id]).subscribe(data=>{
       console.log(data);
-      alert("Response Added");
     }, err=>{
       this.errorMessage=err;
     })
   }
+
+
 
   findAllQuestions(){
     this.fieldService.findAllQuestions(this.currentUser.id).subscribe(data=>{
@@ -101,15 +107,16 @@ export class QuestionComponent implements OnInit {
   hide(){
     this.clickedSrv=!this.clickedSrv;
   }
-
-  onSelectQuest(quest: Question):void {
-    if(this.selectedQuestion==quest)
-      this.selectedQuestion=null;
-    else
-      this.selectedQuestion=quest;
+  deleteFieldList(j:number) {
+    this.fieldService.deleteFieldList(this.questions[j].id).subscribe(data=>{
+      console.log(data);
+    }, err=>{
+      this.errorMessage=err;
+    })
   }
 
   deleteRow(j: number) {
+    this.deleteFieldList(j);
     if (j > -1) {
       this.questions.splice(j, 1);
       this.dataSource = new MatTableDataSource<Question>(this.questions);
