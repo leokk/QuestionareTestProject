@@ -136,66 +136,26 @@
           </div>
         </div>
         <br>
-      <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !oldPas.valid }">-->
-        <!--<label for="newPas">oldPas</label>-->
-        <!--<input type="password" class="form-control" name="oldPas" id="oldPas"[(ngModel)]="pass.oldPas" #oldPas="ngModel" required minlength="4" />-->
-        <!--<div *ngIf="f.submitted && !oldPas.valid" class="help-block">-->
 
-          <!--<div *ngIf="oldPas.errors.required">-->
-            <!--oldPass is required.-->
-          <!--</div>-->
-          <!--<div *ngIf="oldPas.errors.minlength">-->
-            <!--password must be at least 4 characters long.-->
-          <!--</div>-->
-
-        <!--</div>-->
-      <!--</div>-->
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !newPas.valid }">
-          <input type="password"
-                 placeholder="newPas"
-                 class="form-control"
-                 name="newPas"
-                 id="newPas"
-                 [(ngModel)]="pass.newPas" #newPas="ngModel" required minlength="4" [ngModelOptions]="equals()" />
-          <div *ngIf="f.submitted && !newPas.valid" class="help-block">
-            <div *ngIf="newPas.errors.required">newPas is required.</div>
-            <div *ngIf="newPas.errors.minlength">Password must be at least 4 characters long.</div>
+          <input type="password" [(ngModel)]="pass.newPas" name="newPas" placeholder="Password" class="form-control" required #newPas="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+          <div *ngIf="newPas.invalid && (f.submitted || newPas.touched)" class="alert alert-danger">
+            <div *ngIf="newPas.errors.required"> Password is required. </div>
+            <div *ngIf="newPas.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
           </div>
         </div>
         <br>
-      <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !newPas.valid }">-->
-        <!--<label for="newPas">newPas</label>-->
-        <!--<input type="password" class="form-control" name="newPas" id="newPas"[(ngModel)]="pass.newPas" #newPas="ngModel" required minlength="4" [ngModelOptions]="equals()" />-->
-        <!--<div *ngIf="f.submitted && !newPas.valid" class="help-block">-->
-          <!--<div *ngIf="newPas.errors.required">-->
-            <!--newPas is required.-->
-          <!--</div>-->
-          <!--<div *ngIf="newPas.errors.minlength">-->
-            <!--password must be at least 4 characters long.-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
+
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !retypePas.valid }">
-          <input type="password"
-                 placeholder="retypePas"
-                 class="form-control"
-                 name="retypePas"
-                 id="retypePas"
-                 [(ngModel)]="pass.retypePas" #retypePas="ngModel" required minlength="4" />
-          <div *ngIf="f.submitted && !equals()" class="help-block">Password Mismatch</div>
+          <input type="password" [(ngModel)]="pass.retypePas" name="confirmpassword" placeholder="Confirm Password" class="form-control" required #retypePas="ngModel" pattern="{{ newPas.value }}" />
+          <div *ngIf=" retypePas.invalid && (f.submitted || retypePas.touched)" class="alert alert-danger">
+            <div *ngIf="retypePas.errors.required"> Confirm password is required. </div>
+            <div *ngIf="retypePas.errors.pattern"> Password & Confirm Password does not match.</div>
+          </div>
         </div>
         <br>
-      <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !retypePas.valid }">-->
-        <!--<label for="newPas">retypePas</label>-->
-        <!--<input type="password" class="form-control" name="retypePas"  id="retypePas"-->
-               <!--[(ngModel)]="pass.retypePas" #retypePas="ngModel" required minlength="4" />-->
-        <!--<div *ngIf="f.submitted && !equals()" class="help-block">-->
-          <!--Password Mismatch-->
-        <!--</div>-->
-      <!--</div>-->
-
-
+        
 
         <div id="remember" class="checkbox">
         </div>
