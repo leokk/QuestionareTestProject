@@ -1,6 +1,7 @@
 package com.social.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.social.controller.Type;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class Question {
     @GeneratedValue(strategy= GenerationType.TABLE)
     private Long id ;
 
-    private String type;
+    private Type type;
     private String input;
     private String label;
     private boolean active;
@@ -57,13 +58,6 @@ public class Question {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getInput() {
         return input;
@@ -104,5 +98,13 @@ public class Question {
     public void setAnswer(List<Answer> answer) {
         this.answer.clear();
         this.answer.addAll(answer);
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }

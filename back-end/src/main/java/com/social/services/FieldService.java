@@ -101,6 +101,7 @@ public class FieldService {
         for (int i = 0; i < questions.get(0).getAnswer().size(); ++i){
             JSONObject json = new JSONObject();
             for (int j = 0; j <  questions.size(); j++) {
+                if(questions.get(j).isActive())
 //                if(questions.get(j).getAnswer().size())
                 json.accumulate(questions.get(j).getLabel(), questions.get(j).getAnswer().get(i).getInput());
 //                json.put(questions.get(i).getLabel(), questions.get(i).getAnswer());

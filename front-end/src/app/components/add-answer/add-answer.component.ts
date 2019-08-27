@@ -32,6 +32,7 @@ export class AddAnswerComponent implements OnInit {
 
   question:Question;
   questions:Question[];
+  visibleQuestions:Question[]=[];
   displayedColumns:string[]= [];
   clickedSrv:boolean = true;
   str:any;
@@ -55,9 +56,17 @@ export class AddAnswerComponent implements OnInit {
 
   }
 
+  getVisibleQuestions(){
+    for(let i=0; i<this.questions.length; ++i){
+      if(this.questions[i].active)
+        this.visibleQuestions.push(this.questions[i]);
+    }
+  }
+
   findAllQuestions(){
     this.fieldService.findAllQuestions(this.currentUser.id).subscribe(data=>{
       this.questions=data;
+      this.getVisibleQuestions();
       this.prepare(data);
     },error => {
       console.log(error);

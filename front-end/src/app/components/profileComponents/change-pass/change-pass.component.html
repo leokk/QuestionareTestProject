@@ -148,14 +148,14 @@
         <br>
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !retypePas.valid }">
-          <input type="password" [(ngModel)]="pass.retypePas" name="confirmpassword" placeholder="Confirm Password" class="form-control" required #retypePas="ngModel" pattern="{{ newPas.value }}" />
+          <input type="password" [(ngModel)]="pass.retypePas" name="ConfirmPassword" placeholder="Confirm Password" class="form-control" required #retypePas="ngModel" pattern="{{ newPas.value }}" />
           <div *ngIf=" retypePas.invalid && (f.submitted || retypePas.touched)" class="alert alert-danger">
             <div *ngIf="retypePas.errors.required"> Confirm password is required. </div>
             <div *ngIf="retypePas.errors.pattern"> Password & Confirm Password does not match.</div>
           </div>
         </div>
         <br>
-        
+
 
         <div id="remember" class="checkbox">
         </div>

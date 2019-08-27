@@ -48,7 +48,7 @@ public class TestController {
         question.setActive(true);
         answer.setQuestion(question);
         question.setId((long) 1);
-        question.setType("textLine");
+        question.setType(Type.Combobox);
         question.setLabel("label");
         answers.add(answer);
         Answer answer2 = new Answer();
