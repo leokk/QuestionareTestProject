@@ -14,7 +14,7 @@ import {AddAnswerComponent} from "./components/add-answer/add-answer.component";
 
 
 const appRoutes: Routes = [
-  {path: 'profile', component: ProfileComponent, canActivate: [UrlPermission]},
+  {path: 'profile', component: AnswerComponent, canActivate: [UrlPermission]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'edit-profile', component: EditProfileComponent},
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   {path: 'manager', component: ManagerComponent},
   {path: 'fields', component: QuestionComponent},
   {path: 'responses', component: AddAnswerComponent},
-  {path: 'answer', component: AnswerComponent},
+  // {path: 'answer', component: AnswerComponent},
 
   {path: 'profile/admin', redirectTo: '/admin'},
   {path: 'profile/manager', redirectTo: '/manager'},
