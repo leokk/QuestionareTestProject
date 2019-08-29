@@ -14,217 +14,189 @@ import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table(name="Customer")
+@Table(name = "Customer")
 @Scope("session")
-@Inheritance(strategy =InheritanceType.JOINED)
-public  class User implements UserDetails{
-	public enum Role{ USER }
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private Long id ;
+@Inheritance(strategy = InheritanceType.JOINED)
+public class User implements UserDetails {
+    public enum Role {USER}
 
-	@Column(unique = true)
-	private String email ;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long id;
 
-	@Column(nullable = true)
-	private int score ;
+    @Column(unique = true)
+    private String email;
 
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private String password ;
-	private int age;
-    private String  role;
-	private String firstName;
-	private String lastName;
-	private String phone;
+    @Column(nullable = true)
+    private int score;
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "service_id")
-	private Service service;
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private String password;
+    private int age;
+    private String role;
+    private String firstName;
+    private String lastName;
+    private String phone;
 
 
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Question> questions;
 
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true)
-	private Set<Payment> payments;
+    public Set<Question> getQuestions() {
+        return questions;
+    }
 
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-	private Set<Question> questions;
-
-//	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-//	private Set<Answer> answers;
-
-	public Set<Question> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(Set<Question> questions) {
-		this.questions = questions;
-	}
-
-//	public Set<Answer> getAnswers() {
-//		return answers;
-//	}
-//
-//	public void setAnswers(Set<Answer> answers) {
-//		this.answers = answers;
-//	}
-
-	public Service getService() {
-		return service;
-	}
-
-	public void setService(Service service) {
-		this.service = service;
-	}
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
+    }
 
 
+    public User() {
 
-	public User(){
+    }
 
-	}
-	public User(Integer age, String email, String password, String firstName, String lastName, String phone,Service service,int score) {
-		this.age = age;
-		this.email = email;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phone = phone;
-		this.service = service;
+    public User(Integer age, String email, String password, String firstName, String lastName, String phone, int score) {
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+    }
 
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public User(int age) {
+        this.age = age;
+    }
 
-	public User(int age) {
-		this.age = age;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void updateUser(User u) {
+        this.age = u.age;
+        this.email = u.email;
+        this.password = u.password;
+        this.firstName = u.firstName;
+        this.lastName = u.lastName;
+        this.phone = u.phone;
+        this.role = u.role;
+        this.score = u.score;
+    }
 
-	public void updateUser(User u){
-		this.age = u.age;
-		this.email = u.email;
-		this.password = u.password;
-		this.firstName = u.firstName;
-		this.lastName = u.lastName;
-		this.phone = u.phone;
-		this.role=u.role;
-		this.service=u.service;
-		this.score = u.score;
-	}
-	@JsonIgnore
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
+    @JsonIgnore
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
-	@JsonIgnore
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@JsonIgnore
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-	@JsonIgnore
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@JsonIgnore
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Collection<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority(role));
-		return authorities;
-	}
+    @JsonIgnore
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
+    }
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", age=" + age +
-				", email='" + email + '\'' +
-				", score='" + score + '\'' +
-				", password='" + password + '\'' +
-				", role='" + role + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", score='" + score + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 
-	@Override
-	public String getPassword() {
-		return password;
-	}
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
-	@Override
-	public String getUsername() {
-		return this.firstName+" "+this.lastName;
-	}
+    @Override
+    public String getUsername() {
+        return this.firstName + " " + this.lastName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
 
-	public int getScore() {
-		return score;
-	}
+    public int getScore() {
+        return score;
+    }
 
-	public void setScore(int score) {
-		this.score = score;
-	}
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

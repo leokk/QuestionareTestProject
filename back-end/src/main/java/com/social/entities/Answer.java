@@ -30,10 +30,6 @@ public class Answer {
         this.input = input;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-
     @Override
     public String toString() {
         return "Answer{" +
