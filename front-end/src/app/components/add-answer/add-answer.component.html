@@ -27,7 +27,7 @@
 
   <div class="center-block">
     <div class="enter-form">
-      <div style="padding: 20px;     width: -webkit-fill-available;" *ngIf="answers">
+      <div style="padding: 20px;     width: -webkit-fill-available;" *ngIf="visibleQuestions">
 
         <form name="form-update" (ngSubmit)="f.form.valid && addResponse()" #f="ngForm" novalidate>
 
@@ -57,15 +57,16 @@
 
             </div>
           </div>
-
+          <div style="padding: 20px;     width: -webkit-fill-available;" *ngIf="visibleQuestions.length>0">
           <div *ngIf="f.submitted && !f.valid" class="help-block">
-            <div *ngFor="let q of visibleQuestions; let j=index">
-              <div *ngIf="visibleQuestions[j].required&&answers[j].input==''">
-                Заполните '{{visibleQuestions[j].label}}'
+              <div *ngFor="let q of visibleQuestions; let j=index">
+                <div *ngIf="visibleQuestions[j].required&&answers[j].input==''">
+                  Заполните '{{visibleQuestions[j].label}}'
+                </div>
               </div>
             </div>
+            <button type="submit">Ok</button>
           </div>
-          <button type="submit">Ok</button>
 
         </form>
       </div>

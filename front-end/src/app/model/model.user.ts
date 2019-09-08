@@ -1,4 +1,4 @@
-import {Service} from "./model.srv";
+
 import {Question} from "./model.Question";
 import {Answer} from "./model.Answer";
 
@@ -11,7 +11,6 @@ export class User {
   lastName: string="";
   age: number;
   phone: string="";
-  service:Service;
   questions:Question[];
   answers:Answer[];
 }

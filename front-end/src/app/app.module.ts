@@ -9,16 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from "./services/auth.service";
 import {HttpModule} from "@angular/http";
 import {AccountService} from "./services/account.service";
-import { ProfileComponent } from './components/profileComponents/profile/profile.component';
 import {routing} from "./app.routing";
 import {FacebookModule} from "ngx-facebook";
 import {UrlPermission} from "./urlPermission/url.permission";
 import { EditProfileComponent } from './components/profileComponents/edit-profile/edit-profile.component';
 import { ChangePassComponent } from './components/profileComponents/change-pass/change-pass.component';
 import { RefreshProfileComponent } from './utilities/refresh-profile/refresh-profile.component';
-import { AdminComponent } from './components/profileComponents/admin/admin.component';
 import { ChangeServiceComponent } from './components/profileComponents/change-service/change-service.component';
-import { ManagerComponent } from './components/profileComponents/manager/manager.component';
+
 
 import {
   DateAdapter, MatButtonModule,
@@ -46,13 +44,10 @@ import { AddAnswerComponent } from './components/add-answer/add-answer.component
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent,
     EditProfileComponent,
     ChangePassComponent,
     RefreshProfileComponent,
-    AdminComponent,
     ChangeServiceComponent,
-    ManagerComponent,
     AnswerComponent,
     QuestionComponent,
     AlterQuestionComponent,
