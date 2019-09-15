@@ -15,7 +15,7 @@ import {UrlPermission} from "./urlPermission/url.permission";
 import { EditProfileComponent } from './components/profileComponents/edit-profile/edit-profile.component';
 import { ChangePassComponent } from './components/profileComponents/change-pass/change-pass.component';
 import { RefreshProfileComponent } from './utilities/refresh-profile/refresh-profile.component';
-import { ChangeServiceComponent } from './components/profileComponents/change-service/change-service.component';
+
 
 
 import {
@@ -32,6 +32,7 @@ import {FieldService} from "./services/field.service";
 import { AlterQuestionComponent } from './components/alter-question/alter-question.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
 import { AddAnswerComponent } from './components/add-answer/add-answer.component';
+import { CongratulationsPageComponent } from './components/congratulations-page/congratulations-page.component';
 
 
 
@@ -47,12 +48,12 @@ import { AddAnswerComponent } from './components/add-answer/add-answer.component
     EditProfileComponent,
     ChangePassComponent,
     RefreshProfileComponent,
-    ChangeServiceComponent,
     AnswerComponent,
     QuestionComponent,
     AlterQuestionComponent,
     AddQuestionComponent,
     AddAnswerComponent,
+    CongratulationsPageComponent,
 
   ],
   imports: [
