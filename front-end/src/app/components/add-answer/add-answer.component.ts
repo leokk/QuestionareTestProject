@@ -5,7 +5,6 @@ import {MatPaginator, MatTableDataSource} from "@angular/material";
 import {User} from "../../model/model.user";
 import {Question} from "../../model/model.Question";
 import {Answer} from "../../model/model.Answer";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-answer',
@@ -15,7 +14,7 @@ import {Router} from "@angular/router";
 })
 export class AddAnswerComponent implements OnInit {
 
-  constructor(public fieldService:FieldService,overlayContainer: OverlayContainer,public router: Router) {
+  constructor(public fieldService:FieldService,overlayContainer: OverlayContainer) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -75,7 +74,10 @@ export class AddAnswerComponent implements OnInit {
     })
   }
 
-
+  addAnswer() {
+    console.log('MESSSAGAAAAAAAAAAAAAAAAAAAAA');
+    console.log(this.answers);
+  }
 
   getOptions(quest: Question,index:number):string[] {
 
@@ -104,7 +106,7 @@ export class AddAnswerComponent implements OnInit {
 
     this.fieldService.createResponse(this.answers, this.currentUser.id).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['/congratulation']);
+      alert("Response Added");
     }, err=>{
       this.errorMessage=err;
     })

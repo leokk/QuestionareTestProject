@@ -54,7 +54,7 @@ public class FieldController {
     }
 
     @PostMapping(value = "response/create/{id}")
-    public ResponseEntity<?> getAnswersByUserId(@PathVariable("id") Long id, @RequestBody List<Answer> answers) {
+    public ResponseEntity<?> getAnswersByUserId(@PathVariable("id") Long id, @RequestBody List<Answer> answers) throws JSONException {
 
         return new ResponseEntity<>(fieldService.setResponseByUserId(id, answers), HttpStatus.OK);
     }

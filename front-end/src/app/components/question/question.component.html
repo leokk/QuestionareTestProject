@@ -16,9 +16,7 @@
           <li><a  [routerLink]="['/profile']"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong> ▼</a>
             <ul class="submenu">
               <li><a [routerLink]="['/edit-profile']" >Edit profile</a></li>
-              <li><a [routerLink]="['/login']">LogOut</a></li>
               <li><a [routerLink]="['/change-pass']" >Change password</a></li>
-
 <!--              <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a></li>-->
             </ul>
         </ul>
@@ -41,6 +39,9 @@
             <div class="example-container mat-elevation-z8">
 
               <mat-table #table [dataSource]="dataSource">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
 
                 <!-- label Column -->
                 <ng-container matColumnDef="label">
@@ -95,6 +96,7 @@
     </div>
 
   </div>
+
 </body>
 
 

@@ -9,7 +9,6 @@ import {RefreshProfileComponent} from "./utilities/refresh-profile/refresh-profi
 import {QuestionComponent} from "./components/question/question.component";
 import {AnswerComponent} from "./components/answer/answer.component";
 import {AddAnswerComponent} from "./components/add-answer/add-answer.component";
-import {CongratulationsPageComponent} from "./components/congratulations-page/congratulations-page.component";
 
 
 const appRoutes: Routes = [
@@ -22,7 +21,6 @@ const appRoutes: Routes = [
   {path: 'fields', component: QuestionComponent},
   {path: 'responses', component: AddAnswerComponent},
   // {path: 'answer', component: AnswerComponent},
-  {path: 'congratulation', component: CongratulationsPageComponent},
 
   {path: 'profile/admin', redirectTo: '/admin'},
   {path: 'profile/manager', redirectTo: '/manager'},
