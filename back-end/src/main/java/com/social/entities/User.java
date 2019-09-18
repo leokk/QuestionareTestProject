@@ -27,8 +27,6 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-    @Column(nullable = true)
-    private int score;
 
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
@@ -55,7 +53,7 @@ public class User implements UserDetails {
 
     }
 
-    public User(Integer age, String email, String password, String firstName, String lastName, String phone, int score) {
+    public User(Integer age, String email, String password, String firstName, String lastName, String phone) {
         this.age = age;
         this.email = email;
         this.password = password;
@@ -92,7 +90,6 @@ public class User implements UserDetails {
         this.lastName = u.lastName;
         this.phone = u.phone;
         this.role = u.role;
-        this.score = u.score;
     }
 
     @JsonIgnore
@@ -133,7 +130,6 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", age=" + age +
                 ", email='" + email + '\'' +
-                ", score='" + score + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", firstName='" + firstName + '\'' +
@@ -191,12 +187,4 @@ public class User implements UserDetails {
         return id;
     }
 
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 }

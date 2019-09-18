@@ -27,14 +27,12 @@ public class FieldService {
         this.questionRepository = questionRepository;
         this.userRepository = userRepository;
     }
-    
+    public boolean doSmth(){
+        return true;
+    }
     public List<Question> getQuestionByUserId(Long id) {
         User user = userRepository.findById(id);
-        if (user == null)
-            return null;
-        else {
-            return questionRepository.findAllByUser(user);
-        }
+        return questionRepository.findAllByUser(user);
     }
 
     public List<Answer> getAnswersByUserId(Long id) {
@@ -42,7 +40,6 @@ public class FieldService {
     }
 
     public List<Answer> SetAnswersByUserId(List<Answer> answers, Long id) {
-//        for(int i=0; i<answers.size(); ++i);
         return answerRepository.save(answers);
     }
 
@@ -120,8 +117,10 @@ public class FieldService {
     @Transactional
     public boolean deleteQuestion(Long id) {
         Question q = questionRepository.findOne(id);
-        answerRepository.deleteAnswerByQuestion(id);
-        questionRepository.deleteQuestionById(id);
+        if (q != null) {
+            answerRepository.deleteAnswerByQuestion(id);
+            questionRepository.deleteQuestionById(id);
+        }
         return true;
     }
 }
