@@ -174,18 +174,15 @@
       </div>
       <br>
 
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-        <input type="password"
-               placeholder="Password"
-               class="form-control"
-               name="password"
-               id="password"
-               [(ngModel)]="user.password" #password="ngModel" required minlength="4" />
-        <div *ngIf="f.submitted && !password.valid" class="help-block">
-          <div *ngIf="password.errors.required">Password is required.</div>
-          <div *ngIf="password.errors.minlength">Password must be at least 4 characters long.</div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !newPas.valid }">
+        <input type="password" [(ngModel)]="user.password" name="newPas" placeholder="Password" class="form-control" required #newPas="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+        <div *ngIf="newPas.invalid && (f.submitted || newPas.touched)" class="alert alert-danger">
+          <div *ngIf="newPas.errors.required"> Password is required. </div>
+          <div *ngIf="newPas.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
         </div>
       </div>
+
       <br>
 
       <div id="remember" class="checkbox"></div>
