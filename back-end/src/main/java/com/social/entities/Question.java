@@ -1,13 +1,11 @@
 package com.social.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.social.controller.Type;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="Question")

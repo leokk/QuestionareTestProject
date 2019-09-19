@@ -88,7 +88,7 @@ public class FieldService {
         String str = "";
         List<Question> questions = questionRepository.findAllByUser(userRepository.findById(id));
         JSONArray arr = new JSONArray();
-        HashMap<String, JSONObject> map = new HashMap<String, JSONObject>();
+        HashMap<String, JSONObject> map = new HashMap<>();
         if(questions.size()!=0){
             for (int i = 0; i < questions.get(0).getAnswer().size(); ++i) {
                 JSONObject json = new JSONObject();

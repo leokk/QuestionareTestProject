@@ -3,7 +3,6 @@ package com.social.controller;
 import com.social.entities.Answer;
 import com.social.entities.Question;
 import com.social.services.FieldService;
-import com.social.services.UserService;
 import org.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class FieldController {
     private final
     FieldService fieldService;
 
-    public FieldController(UserService userService, FieldService fieldService) {
+    public FieldController(FieldService fieldService) {
         this.fieldService = fieldService;
     }
 
@@ -29,7 +28,7 @@ public class FieldController {
 
     @GetMapping(value = "field/{id}")
     public ResponseEntity<?> getQuestionByUserId(@PathVariable("id") Long id) {
-        return new ResponseEntity<List<Question>>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
+        return new ResponseEntity<>(fieldService.getQuestionByUserId(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "field/{id}")
