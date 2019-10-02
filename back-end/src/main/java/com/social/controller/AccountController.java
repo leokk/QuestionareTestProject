@@ -12,7 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-
+//1. Нужно более детально проработать автоматическое создание тестовых данных
+//        2. Реализовать проект с шаблоном проектирования
+//        3. Развернуть проект на Heroku
+//        4. Реализовать корректную валидацию на формах
 
 @RestController
 @RequestMapping("account")

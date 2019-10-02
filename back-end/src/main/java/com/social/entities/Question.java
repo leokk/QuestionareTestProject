@@ -9,13 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name="Question")
-public class Question {
-    @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
-    private Long id ;
+public class Question extends Field {
+
 
     private Type type;
-    private String input;
     private String label;
     private boolean active;
     private boolean required;
@@ -48,23 +45,6 @@ public class Question {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public String getInput() {
-        return input;
-    }
-
-    public void setInput(String input) {
-        this.input = input;
-    }
-
     @JsonIgnore
     public User getUser() {
         return user;
@@ -73,8 +53,6 @@ public class Question {
     public void setUser(User user) {
         this.user = user;
     }
-
-
 
     public Question() {
     }

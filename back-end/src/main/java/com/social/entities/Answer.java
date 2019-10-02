@@ -6,34 +6,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Answer")
-public class Answer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
-
-    private String input;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getInput() {
-        return input;
-    }
-
-    public void setInput(String input) {
-        this.input = input;
-    }
+public class Answer extends Field {
 
     @Override
     public String toString() {
         return "Answer{" +
-                "input='" + input + '\'' +
+                "input='" +super.getInput() + '\'' +
                 '}';
     }
 

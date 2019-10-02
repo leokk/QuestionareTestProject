@@ -69,6 +69,4 @@ public class AccountControllerTest {
 
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 	}
-
-
 }
